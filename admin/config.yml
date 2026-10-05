@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: nickwesner3-stack/mytestsite1652
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "website"
+    label: "Website"
+    files:
+      - name: "homepage"
+        label: "Homepage"
+        file: "content/homepage.yml"
+        fields:
+          - { label: "Business Name", name: "business_name", widget: "string" }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "About Us", name: "about", widget: "text" }
+          - { label: "Phone Number", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
