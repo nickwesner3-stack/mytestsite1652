@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: nickwesner3-stack/mytestsite1652
+  name: gith-gateway
   branch: main
 
 media_folder: "images/uploads"
