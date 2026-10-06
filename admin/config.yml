@@ -19,3 +19,10 @@ collections:
           - { label: "Phone Number", name: "phone", widget: "string" }
           - { label: "Email", name: "email", widget: "string" }
           - { label: "Hero Image", name: "hero_image", widget: "image" }
+                      - { label: "About Image", name: "about_image", widget: "image", required: false }
+            - { label: "Bottom Image", name: "bottom_image", widget: "image", required: false }
+            - label: "Gallery"
+              name: "gallery"
+              widget: "list"
+              required: false
+              field: { label: "Image", name: "image", widget: "image" }
