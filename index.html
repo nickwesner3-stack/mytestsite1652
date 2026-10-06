@@ -66,6 +66,7 @@ footer{background:#10291f;color:#dbe6df;padding:28px 7%;display:flex;justify-con
 
 <section class="contact" id="contact">
   <div><div class="eyebrow" style="color:#477455">Get in touch</div><h2>Tell us about your project.</h2><p>This is a demo contact section. For a real customer, you would replace this with their phone number, email, service area, and a working form.</p><p class="note">Evergreen Outdoor Co. is fictional. No contact details on this page represent a real business.</p></div>
+  <p>Phone: <span id="business-phone"></span> &nbsp; | &nbsp; Email: <span id="business-email"></span></p>
   <form onsubmit="event.preventDefault(); alert('Demo only — this form is not connected yet.');">
     <input placeholder="Your name" required>
     <input type="email" placeholder="Email address" required>
@@ -97,6 +98,15 @@ fetch('content/homepage.yml')
     if (about && data.about) {
       about.textContent = data.about;
     }
+    const phone = document.querySelector('#business-phone');
+if (phone && data.phone) {
+  phone.textContent = data.phone;
+}
+
+const email = document.querySelector('#business-email');
+if (email && data.email) {
+  email.textContent = data.email;
+}
   })
   .catch(error => console.error('Could not load website content:', error));
 </script>
