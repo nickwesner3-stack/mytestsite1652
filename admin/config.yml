@@ -18,3 +18,4 @@ collections:
           - { label: "About Us", name: "about", widget: "text" }
           - { label: "Phone Number", name: "phone", widget: "string" }
           - { label: "Email", name: "email", widget: "string" }
+          - { label: "Hero Image", name: "hero_image", widget: "image" }
