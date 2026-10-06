@@ -131,7 +131,7 @@ if (gallery && data.gallery) {
   gallery.innerHTML = '';
   data.gallery.forEach(item => {
     const img = document.createElement('img');
-    img.src = item.image;
+    img.src = item
     img.alt = 'Gallery image';
     img.style.width = '100%';
     img.style.maxWidth = '400px';
