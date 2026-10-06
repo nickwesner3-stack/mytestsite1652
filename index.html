@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+D<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -76,5 +76,29 @@ footer{background:#10291f;color:#dbe6df;padding:28px 7%;display:flex;justify-con
 </section>
 
 <footer><strong>Evergreen Outdoor Co.</strong><span>Fictional landscaping website demo</span></footer>
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+<script>
+fetch('content/homepage.yml')
+  .then(response => response.text())
+  .then(text => {
+    const data = jsyaml.load(text);
+
+    const logo = document.querySelector('.logo');
+    if (logo && data.business_name) {
+      logo.innerHTML = data.business_name;
+    }
+
+    const headline = document.querySelector('.hero h1');
+    if (headline && data.headline) {
+      headline.textContent = data.headline;
+    }
+
+    const about = document.querySelector('.about p');
+    if (about && data.about) {
+      about.textContent = data.about;
+    }
+  })
+  .catch(error => console.error('Could not load website content:', error));
+</script>
 </body>
 </html>
