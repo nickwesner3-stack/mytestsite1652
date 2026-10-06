@@ -58,10 +58,14 @@ footer{background:#10291f;color:#dbe6df;padding:28px 7%;display:flex;justify-con
 </section>
 
 <section class="about" id="about">
-  <img src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1200&q=85" alt="Landscaped outdoor space">
+  <img id="about-image" src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1200&q=85" alt="Landscaped outdoor space">
   <div><div class="eyebrow" style="color:#477455">Built on details</div><h2>Your yard should feel like part of your home.</h2><p>Evergreen Outdoor Co. is a fictional landscaping company created for this website demo. This section would normally explain the real company's story, service area, experience, and what makes its work different.</p>
   <div class="stats"><div class="stat"><strong>100%</strong><span>Demo company</span></div><div class="stat"><strong>3</strong><span>Core services</span></div><div class="stat"><strong>1</strong><span>Simple website</span></div></div></div>
 </section>
+<section id="photo-section">
+  <img id="bottom-image" alt="Featured project" style="display:none; width:100%; max-height:500px; object-fit:cover;">
+  <div id="gallery"></div>
+</section>  
 
 <section class="cta"><h2>Ready to upgrade your outdoors?</h2><p>A strong landscaping website gives customers one clear place to see services, understand the company, and request an estimate.</p><a class="btn" href="#contact">Get an Estimate</a></section>
 
@@ -111,7 +115,30 @@ if (email && data.email) {
 const hero = document.querySelector('.hero');
 if (hero && data.hero_image) {
   hero.style.backgroundImage = `linear-gradient(90deg, rgba(14,43,31,.94), rgba(14,43,31,.55)), url('${data.hero_image}')`;
-}    
+}
+          const aboutImage = document.querySelector('#about-image');
+      if (aboutImage && data.about_image) {
+        aboutImage.src = data.about_image;
+      }
+  const bottomImage = document.querySelector('#bottom-image');
+if (bottomImage && data.bottom_image) {
+  bottomImage.src = data.bottom_image;
+  bottomImage.style.display = 'block';
+}
+
+const gallery = document.querySelector('#gallery');
+if (gallery && data.gallery) {
+  gallery.innerHTML = '';
+  data.gallery.forEach(item => {
+    const img = document.createElement('img');
+    img.src = item.image;
+    img.alt = 'Gallery image';
+    img.style.width = '100%';
+    img.style.maxWidth = '400px';
+    img.style.margin = '10px';
+    gallery.appendChild(img);
+  });
+}  
   })
   .catch(error => console.error('Could not load website content:', error));
 </script>
