@@ -3,42 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Evergreen Outdoor Co. | Landscaping</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   font-family:Arial,Helvetica,sans-serif;
+  background:#f6f4ed;
   color:#173024;
-  background:#f7f5ef;
   line-height:1.6;
 }
 
+img{
+  display:block;
+}
+
+/* NAV */
+
 nav{
-  position:sticky;
+  position:absolute;
   top:0;
+  left:0;
+  width:100%;
   z-index:20;
-  background:#123024;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:17px 7%;
+  padding:24px 7%;
   color:white;
 }
 
 .logo{
-  font-size:21px;
-  font-weight:800;
-  letter-spacing:.4px;
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:.6px;
 }
-
-.logo span{color:#b9d77a}
 
 nav ul{
   display:flex;
-  gap:28px;
+  gap:30px;
   list-style:none;
 }
 
@@ -51,313 +64,542 @@ nav a{
 /* HERO */
 
 .hero{
-  min-height:78vh;
+  min-height:92vh;
   display:flex;
   align-items:center;
-  padding:80px 7%;
+  position:relative;
   color:white;
+  padding:130px 7% 110px;
   background:
-    linear-gradient(90deg,rgba(7,31,22,.94),rgba(7,31,22,.68),rgba(7,31,22,.25)),
+    linear-gradient(
+      90deg,
+      rgba(8,31,22,.92) 0%,
+      rgba(8,31,22,.68) 48%,
+      rgba(8,31,22,.18) 100%
+    ),
     url('https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1800&q=85')
     center/cover;
 }
 
 .hero-inner{
-  max-width:720px;
+  max-width:760px;
 }
 
 .eyebrow{
   text-transform:uppercase;
-  letter-spacing:2px;
-  color:#cce598;
-  font-weight:800;
-  font-size:14px;
-  margin-bottom:13px;
+  font-size:13px;
+  letter-spacing:2.5px;
+  font-weight:900;
+  color:#bfdc83;
+  margin-bottom:16px;
 }
 
-h1{
-  font-size:clamp(48px,7vw,82px);
-  line-height:1;
-  margin-bottom:22px;
+.hero h1{
+  font-size:clamp(54px,8vw,96px);
+  line-height:.95;
+  letter-spacing:-3px;
+  margin-bottom:26px;
 }
 
 .hero p{
-  font-size:19px;
-  max-width:590px;
-  margin-bottom:30px;
-  color:#edf5ef;
+  font-size:20px;
+  max-width:600px;
+  color:#edf4ef;
+  margin-bottom:34px;
 }
 
 .btn{
   display:inline-block;
-  padding:14px 22px;
-  border-radius:7px;
+  padding:15px 24px;
+  border-radius:6px;
   text-decoration:none;
-  font-weight:800;
-  margin-right:10px;
-  background:#b9d77a;
+  font-weight:900;
+  background:#bad67d;
   color:#173024;
+  margin-right:10px;
 }
 
 .btn.alt{
-  background:transparent;
-  border:2px solid white;
   color:white;
+  background:transparent;
+  border:2px solid rgba(255,255,255,.8);
 }
 
-/* SERVICES */
+/* FLOATING SERVICE BAR */
 
-section{
-  padding:80px 7%;
-}
-
-.section-title{
-  font-size:42px;
-  line-height:1.1;
-  margin-bottom:32px;
+.service-wrap{
+  position:relative;
+  z-index:10;
+  margin-top:-65px;
+  padding:0 7%;
 }
 
 .services{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:24px;
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(17,48,35,.15);
 }
 
 .service-card{
-  background:white;
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:0 10px 30px rgba(24,49,38,.09);
+  min-height:270px;
+  padding:38px 34px;
+  position:relative;
+  border-right:1px solid #e8ece6;
 }
 
-.service-card img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-  display:block;
+.service-card:last-child{
+  border-right:none;
 }
 
-.service-content{
-  padding:24px;
+.service-number{
+  font-size:14px;
+  font-weight:900;
+  color:#7d8c83;
+  margin-bottom:55px;
 }
 
-.service-content h3{
-  font-size:23px;
-  margin-bottom:8px;
+.service-card h3{
+  font-size:28px;
+  line-height:1.1;
+  margin-bottom:12px;
 }
 
-.service-content p{
-  color:#526158;
+.service-card p{
+  color:#617067;
+  max-width:320px;
 }
 
-/* ABOUT */
+.service-link{
+  display:inline-block;
+  margin-top:22px;
+  font-weight:900;
+  color:#28523c;
+  text-decoration:none;
+}
+
+/* INTRO */
+
+.intro{
+  padding:135px 7% 95px;
+  display:grid;
+  grid-template-columns:.75fr 1.25fr;
+  gap:80px;
+  align-items:start;
+}
+
+.intro-label{
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:900;
+  color:#4a7559;
+}
+
+.intro h2{
+  font-size:clamp(42px,5.5vw,72px);
+  line-height:1.02;
+  letter-spacing:-2px;
+  max-width:850px;
+}
+
+.intro p{
+  margin-top:26px;
+  max-width:700px;
+  font-size:18px;
+  color:#59675f;
+}
+
+/* ABOUT SPLIT */
 
 .about{
-  background:#e8eddc;
   display:grid;
-  grid-template-columns:1.15fr 1fr;
-  gap:60px;
-  align-items:center;
+  grid-template-columns:1.15fr .85fr;
+  min-height:650px;
+  background:#173c2c;
+  color:white;
+}
+
+.about-image-wrap{
+  overflow:hidden;
 }
 
 .about img{
   width:100%;
-  height:470px;
+  height:100%;
+  min-height:650px;
   object-fit:cover;
-  border-radius:16px;
 }
 
-.about h2{
-  font-size:46px;
-  line-height:1.08;
-  margin-bottom:18px;
+.about-content{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:80px 11%;
 }
 
-.about p{
-  font-size:17px;
-  color:#405148;
+.about-content h2{
+  font-size:clamp(42px,5vw,66px);
+  line-height:1;
+  letter-spacing:-2px;
+  margin-bottom:26px;
+}
+
+.about-content p{
+  font-size:18px;
+  color:#d9e4dc;
 }
 
 .stats{
-  display:flex;
-  gap:35px;
-  margin-top:28px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-top:45px;
+}
+
+.stat{
+  border-top:1px solid rgba(255,255,255,.22);
+  padding-top:18px;
 }
 
 .stat strong{
   display:block;
-  font-size:30px;
-  color:#28523c;
+  font-size:31px;
+  color:#c5df8c;
+  margin-bottom:2px;
+}
+
+.stat span{
+  color:#dbe5de;
+  font-size:13px;
 }
 
 /* PROJECTS */
 
-#photo-section{
-  padding:85px 7%;
-  background:#f7f5ef;
+.projects{
+  padding:120px 7%;
 }
 
-.project-heading{
-  display:flex;
-  justify-content:space-between;
+.project-head{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
   align-items:end;
-  gap:25px;
-  margin-bottom:32px;
+  margin-bottom:48px;
 }
 
-.project-heading h2{
-  font-size:44px;
-  line-height:1.1;
+.project-head h2{
+  font-size:clamp(48px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-2px;
 }
 
-.project-heading p{
-  max-width:470px;
-  color:#647068;
+.project-head p{
+  color:#68736c;
+  font-size:18px;
+  max-width:500px;
+  justify-self:end;
+}
+
+.project-layout{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:20px;
+  min-height:640px;
+}
+
+.featured-project{
+  overflow:hidden;
+  border-radius:16px;
+  min-height:640px;
 }
 
 #bottom-image{
   width:100%;
-  height:430px;
+  height:100%;
+  min-height:640px;
   object-fit:cover;
-  border-radius:16px;
-  margin-bottom:22px;
+  display:none;
 }
 
 #gallery{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
   gap:20px;
 }
 
 #gallery img{
-  width:100%!important;
-  max-width:none!important;
-  height:260px;
+  width:100% !important;
+  height:100%;
+  min-height:300px;
   object-fit:cover;
   border-radius:14px;
-  margin:0!important;
+  margin:0 !important;
+}
+
+#gallery img:first-child{
+  grid-column:1 / 3;
+}
+
+/* PROCESS */
+
+.process{
+  background:#e6ebdd;
+  padding:105px 7%;
+}
+
+.process-head{
+  max-width:750px;
+  margin-bottom:55px;
+}
+
+.process-head h2{
+  font-size:clamp(44px,5vw,66px);
+  line-height:1;
+  letter-spacing:-2px;
+}
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+}
+
+.step{
+  padding-top:22px;
+  border-top:2px solid #b9c7b6;
+}
+
+.step span{
+  font-size:13px;
+  font-weight:900;
+  color:#6b7d70;
+}
+
+.step h3{
+  margin-top:28px;
+  font-size:27px;
+  margin-bottom:10px;
+}
+
+.step p{
+  color:#5d6b62;
 }
 
 /* CTA */
 
 .cta{
-  background:#173c2c;
+  padding:105px 7%;
+  background:#10291f;
   color:white;
-  text-align:center;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:60px;
+  align-items:center;
 }
 
 .cta h2{
-  font-size:44px;
-  margin-bottom:12px;
+  font-size:clamp(45px,6vw,76px);
+  line-height:1;
+  letter-spacing:-2px;
+}
+
+.cta-right{
+  justify-self:end;
+  max-width:430px;
 }
 
 .cta p{
-  max-width:650px;
-  margin:0 auto 28px;
-  color:#dce8df;
+  color:#d5e0d8;
+  font-size:18px;
+  margin-bottom:25px;
 }
 
 /* CONTACT */
 
 .contact{
+  padding:110px 7%;
   display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  gap:60px;
+  grid-template-columns:.8fr 1.2fr;
+  gap:90px;
   background:white;
 }
 
 .contact h2{
-  font-size:42px;
-  margin-bottom:12px;
+  font-size:clamp(42px,5vw,66px);
+  line-height:1;
+  letter-spacing:-2px;
+  margin-bottom:20px;
+}
+
+.contact-info p{
+  color:#637067;
 }
 
 .contact-details{
-  margin-top:24px;
-  font-weight:700;
+  margin-top:30px;
+  line-height:2;
+  font-weight:800;
+  color:#173024 !important;
 }
 
 form{
   display:grid;
-  gap:13px;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
 }
 
-input,textarea{
+input,
+textarea{
   width:100%;
-  padding:15px;
-  border:1px solid #cad2c8;
-  border-radius:7px;
+  border:1px solid #d5dbd3;
+  background:#fafaf8;
+  padding:16px;
+  border-radius:6px;
   font:inherit;
 }
 
 textarea{
-  min-height:130px;
+  grid-column:1 / 3;
+  min-height:150px;
 }
 
 .submit{
+  grid-column:1 / 3;
   border:0;
+  padding:17px;
+  border-radius:6px;
   background:#28523c;
   color:white;
-  padding:15px;
-  border-radius:7px;
-  font-weight:800;
+  font-weight:900;
   cursor:pointer;
 }
 
 .note{
-  font-size:13px;
-  color:#6a756d;
-  margin-top:10px;
+  font-size:12px;
+  color:#899289 !important;
+  margin-top:25px;
 }
 
+/* FOOTER */
+
 footer{
-  background:#10291f;
-  color:#dbe6df;
-  padding:28px 7%;
+  padding:32px 7%;
+  background:#0c2118;
+  color:#d9e5dd;
   display:flex;
   justify-content:space-between;
   gap:20px;
 }
 
-@media(max-width:800px){
+/* MOBILE */
 
-  nav ul{display:none}
+@media(max-width:900px){
+
+  nav ul{
+    display:none;
+  }
+
+  .hero{
+    min-height:80vh;
+    padding-top:120px;
+  }
+
+  .hero h1{
+    letter-spacing:-2px;
+  }
+
+  .service-wrap{
+    margin-top:-35px;
+  }
 
   .services,
+  .intro,
   .about,
+  .project-head,
+  .project-layout,
+  .steps,
+  .cta,
   .contact{
     grid-template-columns:1fr;
   }
 
-  .hero{
-    min-height:70vh;
+  .services{
+    border-radius:14px;
+  }
+
+  .service-card{
+    border-right:0;
+    border-bottom:1px solid #e8ece6;
+    min-height:auto;
+  }
+
+  .service-number{
+    margin-bottom:25px;
+  }
+
+  .intro{
+    gap:30px;
+    padding-top:100px;
   }
 
   .about img{
-    height:320px;
+    min-height:400px;
+    height:400px;
+  }
+
+  .about-content{
+    padding:70px 7%;
+  }
+
+  .project-head{
+    gap:20px;
+  }
+
+  .project-head p{
+    justify-self:start;
+  }
+
+  .project-layout{
+    min-height:auto;
+  }
+
+  .featured-project{
+    min-height:420px;
+  }
+
+  #bottom-image{
+    min-height:420px;
   }
 
   #gallery{
     grid-template-columns:1fr;
+    grid-template-rows:auto;
+  }
+
+  #gallery img:first-child{
+    grid-column:auto;
   }
 
   #gallery img{
-    height:260px;
+    min-height:280px;
+    height:280px;
   }
 
-  #bottom-image{
-    height:300px;
+  .cta-right{
+    justify-self:start;
   }
 
-  .project-heading{
-    display:block;
+  form{
+    grid-template-columns:1fr;
   }
 
-  .project-heading p{
-    margin-top:12px;
-  }
-
-  .stats{
-    flex-wrap:wrap;
+  textarea,
+  .submit{
+    grid-column:auto;
   }
 
   footer{
@@ -372,7 +614,7 @@ footer{
 <body>
 
 <nav>
-  <div class="logo">EVERGREEN <span>OUTDOOR CO.</span></div>
+  <div class="logo">EVERGREEN OUTDOOR CO.</div>
 
   <ul>
     <li><a href="#services">Services</a></li>
@@ -383,137 +625,124 @@ footer{
 </nav>
 
 <header class="hero">
-
   <div class="hero-inner">
 
     <div class="eyebrow">
-      Professional Landscaping Services
+      Landscape • Build • Maintain
     </div>
 
     <h1>
-      Beautiful yards.<br>
-      Happier homes.
+      Outdoor spaces built differently.
     </h1>
 
     <p>
-      Landscaping, hardscaping, and lawn care designed to make your
-      property look its best.
+      Thoughtful landscaping, dependable property care,
+      and outdoor spaces designed to make your home stand out.
     </p>
 
     <a class="btn" href="#contact">
-      Get a Free Estimate
+      Request an Estimate
     </a>
 
     <a class="btn alt" href="#projects">
-      View Our Work
+      View Projects
     </a>
 
   </div>
-
 </header>
 
-
-<section id="services">
-
-  <div class="eyebrow" style="color:#477455">
-    What We Do
-  </div>
-
-  <h2 class="section-title">
-    Outdoor services built around your property.
-  </h2>
+<div class="service-wrap" id="services">
 
   <div class="services">
 
     <div class="service-card">
-
-      <img
-      src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=900&q=85"
-      alt="Landscape design">
-
-      <div class="service-content">
-
-        <h3>Landscape Design</h3>
-
-        <p>
-          Planting plans, garden beds, edging, mulch,
-          and complete yard transformations.
-        </p>
-
-      </div>
+      <div class="service-number">01</div>
+      <h3>Landscape Design</h3>
+      <p>
+        Planting, garden beds, mulch, edging,
+        and complete property transformations.
+      </p>
+      <a class="service-link" href="#contact">
+        Start a project →
+      </a>
     </div>
-
 
     <div class="service-card">
-
-      <img
-      src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=900&q=85"
-      alt="Hardscaping">
-
-      <div class="service-content">
-
-        <h3>Hardscaping</h3>
-
-        <p>
-          Patios, walkways, retaining walls,
-          fire-pit areas, and outdoor living spaces.
-        </p>
-
-      </div>
+      <div class="service-number">02</div>
+      <h3>Hardscaping</h3>
+      <p>
+        Patios, walkways, retaining walls,
+        fire pits, and outdoor living spaces.
+      </p>
+      <a class="service-link" href="#contact">
+        Start a project →
+      </a>
     </div>
-
 
     <div class="service-card">
-
-      <img
-      src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=900&q=85"
-      alt="Lawn care">
-
-      <div class="service-content">
-
-        <h3>Lawn Care</h3>
-
-        <p>
-          Mowing, seasonal cleanups, trimming,
-          and dependable property maintenance.
-        </p>
-
-      </div>
+      <div class="service-number">03</div>
+      <h3>Property Care</h3>
+      <p>
+        Lawn maintenance, trimming,
+        seasonal cleanups, and dependable upkeep.
+      </p>
+      <a class="service-link" href="#contact">
+        Start a project →
+      </a>
     </div>
 
+  </div>
+</div>
+
+<section class="intro">
+
+  <div class="intro-label">
+    Built for better outdoor living
+  </div>
+
+  <div>
+    <h2>
+      Your property should look as good outside as it does inside.
+    </h2>
+
+    <p>
+      From simple property improvements to complete outdoor
+      transformations, we focus on clean work, strong details,
+      and spaces made to last.
+    </p>
   </div>
 
 </section>
 
-
 <section class="about" id="about">
 
-  <img
-  id="about-image"
-  src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1200&q=85"
-  alt="Landscaped outdoor space">
+  <div class="about-image-wrap">
+    <img
+      id="about-image"
+      src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1400&q=85"
+      alt="Outdoor project">
+  </div>
 
-  <div>
+  <div class="about-content">
 
-    <div class="eyebrow" style="color:#477455">
+    <div class="eyebrow">
       About Evergreen
     </div>
 
     <h2>
-      More than landscaping.
+      Quality work starts with the details.
     </h2>
 
     <p>
-      Evergreen Outdoor Co. creates and maintains beautiful outdoor
-      spaces designed around the way homeowners actually use their
-      properties.
+      Evergreen Outdoor Co. creates and maintains outdoor spaces
+      built around each property and the people who use it.
     </p>
 
     <div class="stats">
 
       <div class="stat">
         <strong>100%</strong>
-        <span>Focused on quality</span>
+        <span>Quality focused</span>
       </div>
 
       <div class="stat">
@@ -523,7 +752,7 @@ footer{
 
       <div class="stat">
         <strong>1</strong>
-        <span>Trusted team</span>
+        <span>Reliable team</span>
       </div>
 
     </div>
@@ -532,79 +761,137 @@ footer{
 
 </section>
 
+<section class="projects" id="projects">
 
-<section id="photo-section">
-
-  <div id="projects" class="project-heading">
+  <div class="project-head">
 
     <div>
-
       <div class="eyebrow" style="color:#477455">
-        Our Work
+        Selected Work
       </div>
 
       <h2>
-        Recent Projects
+        Recent projects.
       </h2>
-
     </div>
 
     <p>
-      A look at some of our landscaping, hardscaping,
-      and property transformation projects.
+      A look at recent landscaping,
+      hardscaping, and outdoor transformation projects.
     </p>
 
   </div>
 
-  <img
-  id="bottom-image"
-  alt="Featured project"
-  style="display:none;">
+  <div class="project-layout">
 
-  <div id="gallery"></div>
+    <div class="featured-project">
+      <img
+        id="bottom-image"
+        alt="Featured outdoor project">
+    </div>
 
-</section>
+    <div id="gallery"></div>
 
-
-<section class="cta">
-
-  <h2>
-    Ready to upgrade your outdoors?
-  </h2>
-
-  <p>
-    Tell us what you have in mind and we'll help turn your property
-    into an outdoor space you'll enjoy.
-  </p>
-
-  <a class="btn" href="#contact">
-    Get an Estimate
-  </a>
+  </div>
 
 </section>
 
+<section class="process">
 
-<section class="contact" id="contact">
-
-  <div>
+  <div class="process-head">
 
     <div class="eyebrow" style="color:#477455">
-      Get In Touch
+      How It Works
     </div>
 
     <h2>
-      Tell us about your project.
+      Simple from the first call to the final walkthrough.
+    </h2>
+
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <span>STEP 01</span>
+      <h3>Tell us your idea.</h3>
+      <p>
+        Reach out and tell us what you want
+        to improve around your property.
+      </p>
+    </div>
+
+    <div class="step">
+      <span>STEP 02</span>
+      <h3>Build the plan.</h3>
+      <p>
+        We review the project, discuss the details,
+        and create a clear plan for the work.
+      </p>
+    </div>
+
+    <div class="step">
+      <span>STEP 03</span>
+      <h3>Bring it to life.</h3>
+      <p>
+        The project gets completed with
+        clean craftsmanship and attention to detail.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="cta">
+
+  <div>
+    <div class="eyebrow">
+      Start Your Project
+    </div>
+
+    <h2>
+      Ready for a better outdoor space?
+    </h2>
+  </div>
+
+  <div class="cta-right">
+
+    <p>
+      Tell us what you have in mind
+      and we'll help you take the next step.
+    </p>
+
+    <a class="btn" href="#contact">
+      Get a Free Estimate
+    </a>
+
+  </div>
+
+</section>
+
+<section class="contact" id="contact">
+
+  <div class="contact-info">
+
+    <div class="eyebrow" style="color:#477455">
+      Contact
+    </div>
+
+    <h2>
+      Let's talk about your property.
     </h2>
 
     <p>
-      Have a landscaping project in mind?
-      Reach out and tell us what you're looking for.
+      Have a project in mind?
+      Send us a message and tell us what you're looking for.
     </p>
 
     <p class="contact-details">
       Phone:
       <span id="business-phone"></span>
       <br>
+
       Email:
       <span id="business-email"></span>
     </p>
@@ -615,35 +902,36 @@ footer{
 
   </div>
 
-
   <form
-  onsubmit="event.preventDefault(); alert('Demo only — this form is not connected yet.');">
+    onsubmit="event.preventDefault(); alert('Demo only — this form is not connected yet.');">
 
     <input
-    placeholder="Your name"
-    required>
+      placeholder="Your name"
+      required>
 
     <input
-    type="email"
-    placeholder="Email address"
-    required>
+      type="email"
+      placeholder="Email address"
+      required>
 
     <input
-    placeholder="Phone number">
+      placeholder="Phone number">
+
+    <input
+      placeholder="Project type">
 
     <textarea
-    placeholder="Tell us about your project"></textarea>
+      placeholder="Tell us about your project"></textarea>
 
     <button
-    class="submit"
-    type="submit">
+      class="submit"
+      type="submit">
       Request Estimate
     </button>
 
   </form>
 
 </section>
-
 
 <footer>
 
@@ -652,11 +940,10 @@ footer{
   </strong>
 
   <span>
-    Landscaping • Hardscaping • Lawn Care
+    Landscaping • Hardscaping • Property Care
   </span>
 
 </footer>
-
 
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
 
@@ -670,9 +957,8 @@ fetch('content/homepage.yml')
 
   const data = jsyaml.load(text);
 
-
   const logo =
-  document.querySelector('.logo');
+    document.querySelector('.logo');
 
   if (logo && data.business_name) {
     logo.textContent = data.business_name;
@@ -680,7 +966,7 @@ fetch('content/homepage.yml')
 
 
   const headline =
-  document.querySelector('.hero h1');
+    document.querySelector('.hero h1');
 
   if (headline && data.headline) {
     headline.textContent = data.headline;
@@ -688,7 +974,7 @@ fetch('content/homepage.yml')
 
 
   const about =
-  document.querySelector('.about p');
+    document.querySelector('.about-content p');
 
   if (about && data.about) {
     about.textContent = data.about;
@@ -696,7 +982,7 @@ fetch('content/homepage.yml')
 
 
   const phone =
-  document.querySelector('#business-phone');
+    document.querySelector('#business-phone');
 
   if (phone && data.phone) {
     phone.textContent = data.phone;
@@ -704,7 +990,7 @@ fetch('content/homepage.yml')
 
 
   const email =
-  document.querySelector('#business-email');
+    document.querySelector('#business-email');
 
   if (email && data.email) {
     email.textContent = data.email;
@@ -712,16 +998,16 @@ fetch('content/homepage.yml')
 
 
   const hero =
-  document.querySelector('.hero');
+    document.querySelector('.hero');
 
   if (hero && data.hero_image) {
 
     hero.style.backgroundImage =
     `linear-gradient(
       90deg,
-      rgba(7,31,22,.94),
-      rgba(7,31,22,.68),
-      rgba(7,31,22,.25)
+      rgba(8,31,22,.92) 0%,
+      rgba(8,31,22,.68) 48%,
+      rgba(8,31,22,.18) 100%
     ),
     url('${data.hero_image}')`;
 
@@ -729,7 +1015,7 @@ fetch('content/homepage.yml')
 
 
   const aboutImage =
-  document.querySelector('#about-image');
+    document.querySelector('#about-image');
 
   if (aboutImage && data.about_image) {
     aboutImage.src = data.about_image;
@@ -737,39 +1023,41 @@ fetch('content/homepage.yml')
 
 
   const bottomImage =
-  document.querySelector('#bottom-image');
+    document.querySelector('#bottom-image');
 
   if (bottomImage && data.bottom_image) {
 
     bottomImage.src =
-    data.bottom_image;
+      data.bottom_image;
 
     bottomImage.style.display =
-    'block';
+      'block';
 
   }
 
 
   const gallery =
-  document.querySelector('#gallery');
+    document.querySelector('#gallery');
 
   if (gallery && data.gallery) {
 
     gallery.innerHTML = '';
 
-    data.gallery.forEach(item => {
+    data.gallery
+      .slice(0,3)
+      .forEach(item => {
 
-      const img =
-      document.createElement('img');
+        const img =
+          document.createElement('img');
 
-      img.src = item;
+        img.src = item;
 
-      img.alt =
-      'Recent landscaping project';
+        img.alt =
+          'Recent landscaping project';
 
-      gallery.appendChild(img);
+        gallery.appendChild(img);
 
-    });
+      });
 
   }
 
