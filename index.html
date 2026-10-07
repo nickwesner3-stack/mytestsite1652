@@ -1,2345 +1,2898 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Evergreen Outdoor Co. | Landscaping & Outdoor Living</title>
-
-<meta name="description" content="Professional landscaping, hardscaping, lawn care and outdoor living services in New Jersey.">
-<meta name="theme-color" content="#102b20">
-
-<style>
-:root{
-  --green:#153a2a;
-  --green-dark:#0c241a;
-  --green-light:#345f47;
-  --lime:#bddb7c;
-  --cream:#f5f3ec;
-  --white:#ffffff;
-  --text:#173024;
-  --muted:#69766e;
-  --line:#dfe4df;
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--cream);
-  color:var(--text);
-  line-height:1.6;
-  overflow-x:hidden;
-}
-
-img{
-  display:block;
-  max-width:100%;
-}
-
-a{
-  color:inherit;
-}
-
-button,
-input,
-textarea,
-select{
-  font:inherit;
-}
-
-/* =========================
-   NAVIGATION
-========================= */
-
-.site-nav{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:1000;
-  color:white;
-  transition:
-    background .35s ease,
-    color .35s ease,
-    box-shadow .35s ease;
-}
-
-.nav-inner{
-  height:88px;
-  padding:0 6%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  transition:height .35s ease;
-}
-
-.site-nav.scrolled,
-.site-nav:hover{
-  background:white;
-  color:var(--green-dark);
-  box-shadow:0 10px 35px rgba(0,0,0,.09);
-}
-
-.site-nav.scrolled .nav-inner{
-  height:72px;
-}
-
-.logo{
-  font-size:20px;
-  font-weight:900;
-  letter-spacing:.7px;
-  text-decoration:none;
-  white-space:nowrap;
-}
-
-.desktop-menu{
-  list-style:none;
-  display:flex;
-  align-items:center;
-  gap:31px;
-}
-
-.desktop-menu > li{
-  position:relative;
-}
-
-.desktop-menu a{
-  text-decoration:none;
-  font-weight:700;
-  font-size:14px;
-}
-
-.desktop-menu > li > a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-8px;
-  width:0;
-  height:2px;
-  background:var(--lime);
-  transition:width .25s ease;
-}
-
-.desktop-menu > li:hover > a::after{
-  width:100%;
-}
-
-.nav-cta{
-  padding:11px 17px;
-  border:1px solid currentColor;
-  border-radius:4px;
-  transition:.25s ease;
-}
-
-.nav-cta:hover{
-  background:var(--green);
-  color:white;
-  border-color:var(--green);
-}
-
-.mega-menu{
-  position:absolute;
-  top:100%;
-  left:0;
-  right:0;
-  background:white;
-  color:var(--text);
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(-12px);
-  transition:.3s ease;
-  box-shadow:0 22px 45px rgba(0,0,0,.1);
-}
-
-.site-nav:hover .mega-menu{
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
-}
-
-.mega-inner{
-  max-width:1200px;
-  margin:auto;
-  padding:30px 6% 34px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:35px;
-}
-
-.mega-inner h4{
-  margin-bottom:9px;
-  font-size:13px;
-  text-transform:uppercase;
-  letter-spacing:1.4px;
-  color:var(--green-light);
-}
-
-.mega-inner a{
-  display:block;
-  text-decoration:none;
-  margin:7px 0;
-  font-size:14px;
-}
-
-.mega-inner a:hover{
-  color:var(--green-light);
-}
-
-.mobile-toggle{
-  display:none;
-  border:0;
-  background:none;
-  color:inherit;
-  font-size:28px;
-  cursor:pointer;
-}
-
-.mobile-menu{
-  display:none;
-}
-
-/* =========================
-   HERO VIDEO
-========================= */
-
-.hero{
-  position:relative;
-  height:100vh;
-  min-height:650px;
-  display:flex;
-  align-items:flex-end;
-  overflow:hidden;
-  color:white;
-  background:
-    linear-gradient(rgba(5,24,16,.3),rgba(5,24,16,.6)),
-    url("https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=2000&q=88")
-    center/cover no-repeat;
-}
-
-.hero-video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:0;
-}
-
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(5,24,16,.73) 0%,
-      rgba(5,24,16,.34) 55%,
-      rgba(5,24,16,.15) 100%
-    );
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  width:100%;
-  padding:0 7% 10vh;
-  max-width:1050px;
-}
-
-.eyebrow{
-  text-transform:uppercase;
-  letter-spacing:2.5px;
-  font-weight:800;
-  font-size:12px;
-  margin-bottom:18px;
-  color:var(--lime);
-}
-
-.hero h1{
-  font-size:clamp(52px,8vw,105px);
-  line-height:.93;
-  letter-spacing:-3px;
-  max-width:950px;
-  margin-bottom:25px;
-}
-
-.hero-copy{
-  max-width:620px;
-  font-size:19px;
-  color:#f0f5f1;
-  margin-bottom:31px;
-}
-
-.button-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:52px;
-  padding:0 24px;
-  border-radius:4px;
-  text-decoration:none;
-  font-weight:800;
-  border:2px solid var(--lime);
-  background:var(--lime);
-  color:var(--green-dark);
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease,
-    background .25s ease;
-}
-
-.btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 13px 28px rgba(0,0,0,.18);
-}
-
-.btn-outline{
-  background:transparent;
-  color:white;
-  border-color:white;
-}
-
-.btn-outline:hover{
-  background:white;
-  color:var(--green-dark);
-}
-
-.scroll-hint{
-  position:absolute;
-  right:7%;
-  bottom:8vh;
-  z-index:2;
-  writing-mode:vertical-rl;
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  opacity:.8;
-}
-
-/* =========================
-   GENERAL
-========================= */
-
-section{
-  padding:105px 7%;
-}
-
-.section-head{
-  max-width:780px;
-  margin-bottom:52px;
-}
-
-.section-head h2{
-  font-size:clamp(38px,5vw,64px);
-  line-height:1.02;
-  letter-spacing:-2px;
-  margin-bottom:18px;
-}
-
-.section-head p{
-  font-size:18px;
-  color:var(--muted);
-}
-
-/* =========================
-   INTRO
-========================= */
-
-.intro{
-  background:white;
-  display:grid;
-  grid-template-columns:.85fr 1.15fr;
-  gap:80px;
-  align-items:start;
-}
-
-.intro-label{
-  font-size:13px;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-weight:800;
-  color:var(--green-light);
-}
-
-.intro h2{
-  font-size:clamp(40px,5vw,66px);
-  line-height:1.03;
-  letter-spacing:-2px;
-}
-
-.intro-copy p{
-  font-size:18px;
-  color:#59675f;
-  margin-bottom:20px;
-}
-
-/* =========================
-   SERVICES
-========================= */
-
-.services-section{
-  background:var(--cream);
-}
-
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-}
-
-.service-card{
-  min-height:520px;
-  position:relative;
-  overflow:hidden;
-  border-radius:8px;
-  color:white;
-  background:#234;
-}
-
-.service-card img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:transform .8s cubic-bezier(.2,.7,.2,1);
-}
-
-.service-card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    transparent 25%,
-    rgba(5,24,16,.82) 100%
-  );
-}
-
-.service-card:hover img{
-  transform:scale(1.07);
-}
-
-.service-info{
-  position:absolute;
-  z-index:2;
-  left:27px;
-  right:27px;
-  bottom:28px;
-}
-
-.service-number{
-  font-size:12px;
-  letter-spacing:2px;
-  opacity:.75;
-}
-
-.service-info h3{
-  font-size:29px;
-  margin:6px 0 8px;
-}
-
-.service-info p{
-  color:#e5eee8;
-}
-
-/* =========================
-   PROCESS
-========================= */
-
-.process{
-  background:var(--green-dark);
-  color:white;
-}
-
-.process .section-head p{
-  color:#c9d6ce;
-}
-
-.process-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border-top:1px solid rgba(255,255,255,.18);
-}
-
-.process-item{
-  padding:35px 30px 25px 0;
-  border-right:1px solid rgba(255,255,255,.18);
-}
-
-.process-item:not(:first-child){
-  padding-left:30px;
-}
-
-.process-item:last-child{
-  border-right:0;
-}
-
-.process-num{
-  color:var(--lime);
-  font-size:13px;
-  letter-spacing:2px;
-}
-
-.process-item h3{
-  font-size:25px;
-  margin:15px 0 10px;
-}
-
-.process-item p{
-  color:#bfcfc5;
-}
-
-/* =========================
-   ABOUT
-========================= */
-
-.about{
-  background:white;
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:75px;
-  align-items:center;
-}
-
-.about-media{
-  overflow:hidden;
-  border-radius:7px;
-}
-
-.about-media img{
-  width:100%;
-  height:610px;
-  object-fit:cover;
-  transition:transform .8s ease;
-}
-
-.about-media:hover img{
-  transform:scale(1.035);
-}
-
-.about h2{
-  font-size:clamp(40px,5vw,64px);
-  line-height:1.02;
-  letter-spacing:-2px;
-  margin-bottom:22px;
-}
-
-.about-text{
-  color:#59675f;
-  font-size:18px;
-}
-
-.stats{
-  margin-top:36px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.stat strong{
-  display:block;
-  font-size:34px;
-  color:var(--green);
-}
-
-.stat span{
-  font-size:13px;
-  color:var(--muted);
-}
-
-/* =========================
-   PROJECTS
-========================= */
-
-.projects{
-  background:#e9ede4;
-}
-
-.feature-project{
-  position:relative;
-  height:650px;
-  overflow:hidden;
-  border-radius:8px;
-  margin-bottom:24px;
-}
-
-.feature-project img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:transform 1s ease;
-}
-
-.feature-project:hover img{
-  transform:scale(1.035);
-}
-
-.project-overlay{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:flex-end;
-  padding:38px;
-  color:white;
-  background:linear-gradient(
-    transparent 45%,
-    rgba(7,29,20,.75)
-  );
-}
-
-.project-overlay h3{
-  font-size:clamp(30px,4vw,52px);
-}
-
-.project-overlay p{
-  color:#e8eee9;
-}
-
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.gallery img{
-  width:100%;
-  height:310px;
-  object-fit:cover;
-  border-radius:7px;
-  transition:
-    transform .4s ease,
-    box-shadow .4s ease;
-}
-
-.gallery img:hover{
-  transform:translateY(-7px);
-  box-shadow:0 18px 35px rgba(0,0,0,.14);
-}
-
-/* =========================
-   TESTIMONIAL
-========================= */
-
-.testimonial{
-  background:var(--green);
-  color:white;
-  text-align:center;
-}
-
-.quote{
-  max-width:950px;
-  margin:auto;
-  font-size:clamp(29px,4vw,48px);
-  line-height:1.25;
-  letter-spacing:-1px;
-}
-
-.stars{
-  color:var(--lime);
-  letter-spacing:5px;
-  margin-bottom:22px;
-  font-size:20px;
-}
-
-.quote-name{
-  margin-top:25px;
-  color:#d4e0d8;
-  font-weight:700;
-}
-
-/* =========================
-   SERVICE AREA / MAP
-========================= */
-
-.location{
-  background:white;
-  display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:65px;
-  align-items:center;
-}
-
-.location h2{
-  font-size:clamp(40px,5vw,62px);
-  line-height:1.03;
-  letter-spacing:-2px;
-  margin-bottom:20px;
-}
-
-.location p{
-  color:var(--muted);
-  font-size:17px;
-  margin-bottom:22px;
-}
-
-.area-list{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-}
-
-.area-list span{
-  padding:8px 13px;
-  background:#edf1e9;
-  border-radius:30px;
-  font-size:13px;
-  font-weight:700;
-}
-
-.map-wrap{
-  height:470px;
-  border-radius:8px;
-  overflow:hidden;
-  background:#ddd;
-}
-
-.map-wrap iframe{
-  width:100%;
-  height:100%;
-  border:0;
-}
-
-/* =========================
-   ESTIMATE FORM
-========================= */
-
-.estimate{
-  background:#eee9df;
-  display:grid;
-  grid-template-columns:.78fr 1.22fr;
-  gap:80px;
-  align-items:start;
-}
-
-.estimate h2{
-  font-size:clamp(43px,5vw,67px);
-  line-height:1;
-  letter-spacing:-2px;
-  margin-bottom:20px;
-}
-
-.estimate-intro p{
-  color:var(--muted);
-  font-size:18px;
-  margin-bottom:25px;
-}
-
-.contact-links{
-  margin-top:35px;
-}
-
-.contact-links a{
-  display:block;
-  font-weight:800;
-  text-decoration:none;
-  margin:8px 0;
-}
-
-.contact-links a:hover{
-  text-decoration:underline;
-}
-
-.estimate-form{
-  background:white;
-  padding:38px;
-  border-radius:8px;
-  box-shadow:0 15px 40px rgba(0,0,0,.07);
-}
-
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:17px;
-}
-
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-.field.full{
-  grid-column:1/-1;
-}
-
-.field label{
-  font-size:13px;
-  font-weight:800;
-}
-
-.field input,
-.field textarea,
-.field select{
-  width:100%;
-  border:1px solid #d5dbd5;
-  background:#fafbf9;
-  padding:14px 13px;
-  border-radius:4px;
-  outline:none;
-  transition:.2s ease;
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus{
-  border-color:var(--green-light);
-  box-shadow:0 0 0 3px rgba(52,95,71,.11);
-}
-
-.field textarea{
-  min-height:145px;
-  resize:vertical;
-}
-
-.form-submit{
-  width:100%;
-  border:0;
-  margin-top:18px;
-  min-height:54px;
-  border-radius:4px;
-  background:var(--green);
-  color:white;
-  font-weight:900;
-  cursor:pointer;
-  transition:.25s ease;
-}
-
-.form-submit:hover{
-  background:var(--green-dark);
-  transform:translateY(-2px);
-}
-
-.form-note{
-  font-size:12px;
-  color:#7a857e;
-  margin-top:11px;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-  background:#081c14;
-  color:white;
-  padding:65px 7% 28px;
-}
-
-.footer-grid{
-  display:grid;
-  grid-template-columns:1.5fr repeat(3,1fr);
-  gap:50px;
-  padding-bottom:55px;
-}
-
-.footer-brand{
-  font-size:25px;
-  font-weight:900;
-}
-
-.footer-copy{
-  margin-top:15px;
-  color:#aebdb4;
-  max-width:360px;
-}
-
-.footer-col h4{
-  font-size:12px;
-  letter-spacing:1.6px;
-  text-transform:uppercase;
-  color:var(--lime);
-  margin-bottom:15px;
-}
-
-.footer-col a{
-  display:block;
-  color:#c8d4cd;
-  text-decoration:none;
-  margin:8px 0;
-}
-
-.footer-col a:hover{
-  color:white;
-}
-
-.footer-bottom{
-  border-top:1px solid rgba(255,255,255,.12);
-  padding-top:24px;
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  color:#8fa097;
-  font-size:12px;
-}
-
-/* =========================
-   SCROLL ANIMATIONS
-========================= */
-
-.reveal{
-  opacity:0;
-  transform:translateY(38px);
-  transition:
-    opacity .8s ease,
-    transform .8s cubic-bezier(.2,.7,.2,1);
-}
-
-.reveal.visible{
-  opacity:1;
-  transform:none;
-}
-
-.delay-1{transition-delay:.1s}
-.delay-2{transition-delay:.2s}
-.delay-3{transition-delay:.3s}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:900px){
-
-  .desktop-menu,
-  .mega-menu{
-    display:none;
-  }
-
-  .mobile-toggle{
-    display:block;
-  }
-
-  .mobile-menu{
-    position:absolute;
-    top:100%;
-    left:0;
-    right:0;
-    background:white;
-    color:var(--green-dark);
-    padding:20px 7% 28px;
-    box-shadow:0 20px 35px rgba(0,0,0,.12);
-  }
-
-  .mobile-menu.open{
-    display:block;
-  }
-
-  .mobile-menu a{
-    display:block;
-    padding:12px 0;
-    border-bottom:1px solid #e6e9e6;
-    text-decoration:none;
-    font-weight:800;
-  }
-
-  .hero{
-    min-height:700px;
-  }
-
-  .hero h1{
-    letter-spacing:-2px;
-  }
-
-  .scroll-hint{
-    display:none;
-  }
-
-  .intro,
-  .about,
-  .location,
-  .estimate{
-    grid-template-columns:1fr;
-    gap:45px;
-  }
-
-  .services-grid{
-    grid-template-columns:1fr;
-  }
-
-  .service-card{
-    min-height:470px;
-  }
-
-  .process-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .process-item{
-    border-bottom:1px solid rgba(255,255,255,.18);
-  }
-
-  .gallery{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .footer-grid{
-    grid-template-columns:1fr 1fr;
-  }
-}
-
-@media(max-width:600px){
-
-  section{
-    padding:80px 6%;
-  }
-
-  .nav-inner{
-    padding:0 6%;
-  }
-
-  .hero-content{
-    padding:0 6% 11vh;
-  }
-
-  .hero h1{
-    font-size:52px;
-  }
-
-  .hero-copy{
-    font-size:16px;
-  }
-
-  .process-grid,
-  .gallery,
-  .form-grid,
-  .footer-grid{
-    grid-template-columns:1fr;
-  }
-
-  .process-item,
-  .process-item:not(:first-child){
-    padding:27px 0;
-    border-right:0;
-  }
-
-  .about-media img{
-    height:400px;
-  }
-
-  .feature-project{
-    height:470px;
-  }
-
-  .gallery img{
-    height:270px;
-  }
-
-  .map-wrap{
-    height:380px;
-  }
-
-  .estimate-form{
-    padding:25px 20px;
-  }
-
-  .footer-bottom{
-    flex-direction:column;
-  }
-}
-
-@media(prefers-reduced-motion:reduce){
-  *,
-  *::before,
-  *::after{
-    scroll-behavior:auto!important;
-    animation:none!important;
-    transition:none!important;
-  }
-}
-</style>
-
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Evergreen Outdoor Co. | Landscape Design & Outdoor Living</title>
+  <meta
+    name="description"
+    content="Premium landscape design, hardscaping, property care and outdoor living services in New Jersey."
+  />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- YAML parser for existing editable homepage.yml -->
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+
+  <!-- Netlify Identity -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <style>
+    :root {
+      --green: #17382c;
+      --green-2: #214c3a;
+      --green-3: #2d624b;
+      --sage: #dce5dc;
+      --sage-2: #edf2ed;
+      --cream: #f4f1e9;
+      --warm: #e8e0d1;
+      --white: #ffffff;
+      --ink: #18211c;
+      --muted: #69726c;
+      --line: rgba(23, 56, 44, 0.14);
+      --shadow: 0 25px 70px rgba(17, 37, 29, 0.13);
+      --radius: 26px;
+      --max: 1380px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    img,
+    video {
+      display: block;
+      width: 100%;
+    }
+
+    img {
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    ::selection {
+      background: var(--green);
+      color: white;
+    }
+
+    .container {
+      width: min(calc(100% - 64px), var(--max));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .display {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      letter-spacing: -.04em;
+      line-height: .98;
+    }
+
+    .section-title {
+      max-width: 900px;
+      font-size: clamp(46px, 6vw, 88px);
+    }
+
+    .body-copy {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    /* ======================================================
+       NAVIGATION
+    ====================================================== */
+
+    .site-header {
+      position: fixed;
+      top: 18px;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    .nav-shell {
+      position: relative;
+      width: min(calc(100% - 42px), 1460px);
+      margin: auto;
+      border-radius: 18px;
+      color: white;
+      transition:
+        background .35s ease,
+        color .35s ease,
+        box-shadow .35s ease,
+        border-radius .35s ease;
+      pointer-events: auto;
+    }
+
+    .nav-shell:hover,
+    .nav-shell.scrolled,
+    .nav-shell.menu-open {
+      color: var(--ink);
+      background: rgba(255, 255, 255, .97);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, .12);
+    }
+
+    .nav-main {
+      min-height: 76px;
+      padding: 0 24px 0 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: max-content;
+      font-family: "Manrope", sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -.03em;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+
+    .brand-mark svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 34px;
+      margin-left: auto;
+    }
+
+    .desktop-nav > a,
+    .nav-dropdown-trigger {
+      position: relative;
+      padding: 27px 0;
+      border: 0;
+      color: inherit;
+      background: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .desktop-nav > a::after,
+    .nav-dropdown-trigger::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: 21px;
+      height: 1px;
+      background: currentColor;
+      transition: right .25s ease;
+    }
+
+    .desktop-nav > a:hover::after,
+    .nav-dropdown-trigger:hover::after {
+      right: 0;
+    }
+
+    .nav-cta {
+      padding: 13px 20px;
+      border-radius: 999px;
+      background: white;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 700;
+      transition: .3s ease;
+    }
+
+    .nav-shell:hover .nav-cta,
+    .nav-shell.scrolled .nav-cta,
+    .nav-shell.menu-open .nav-cta {
+      background: var(--green);
+      color: white;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+    }
+
+    .mega-menu {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      background: rgba(255,255,255,.985);
+      color: var(--ink);
+      border-radius: 0 0 18px 18px;
+      transition:
+        max-height .42s ease,
+        opacity .3s ease;
+    }
+
+    .nav-shell:hover .mega-menu {
+      max-height: 440px;
+      opacity: 1;
+    }
+
+    .mega-inner {
+      padding: 22px 30px 34px;
+      border-top: 1px solid #e9ece9;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      gap: 46px;
+    }
+
+    .mega-feature {
+      min-height: 230px;
+      padding: 28px;
+      border-radius: 17px;
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(20,50,39,.85), rgba(20,50,39,.25)),
+        url("https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1200&q=90")
+        center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .mega-feature span {
+      margin-bottom: 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+    }
+
+    .mega-feature strong {
+      max-width: 330px;
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .mega-column h4 {
+      margin-bottom: 17px;
+      color: #89928d;
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .mega-column a {
+      display: block;
+      padding: 7px 0;
+      font-size: 14px;
+      font-weight: 500;
+      transition: .2s ease;
+    }
+
+    .mega-column a:hover {
+      padding-left: 5px;
+      color: var(--green-3);
+    }
+
+    .mobile-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      background: transparent;
+      color: inherit;
+    }
+
+    .mobile-toggle span {
+      display: block;
+      width: 23px;
+      height: 1px;
+      margin: 6px auto;
+      background: currentColor;
+      transition: .3s ease;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    /* ======================================================
+       HERO
+    ====================================================== */
+
+    .hero {
+      position: relative;
+      height: max(720px, 100svh);
+      min-height: 720px;
+      overflow: hidden;
+      color: white;
+      background: var(--green);
+    }
+
+    .hero-media,
+    .hero-video,
+    .hero-poster {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-video,
+    .hero-poster {
+      object-fit: cover;
+    }
+
+    .hero-video {
+      z-index: 2;
+    }
+
+    .hero-poster {
+      z-index: 1;
+      background:
+        url("https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=2400&q=90")
+        center/cover no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(9, 28, 21, .79) 0%,
+          rgba(9, 28, 21, .47) 45%,
+          rgba(9, 28, 21, .14) 75%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(8, 25, 18, .5),
+          transparent 45%
+        );
+    }
+
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+      opacity: .14;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      height: 100%;
+      padding-top: 170px;
+      padding-bottom: 65px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .hero-copy {
+      max-width: 1050px;
+    }
+
+    .hero-kicker {
+      margin-bottom: 27px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 43px;
+      height: 1px;
+      background: white;
+    }
+
+    .hero h1 {
+      max-width: 1000px;
+      font-size: clamp(66px, 8.5vw, 142px);
+      line-height: .86;
+      text-wrap: balance;
+      text-shadow: 0 5px 35px rgba(0,0,0,.2);
+    }
+
+    .hero h1 em {
+      font-weight: 500;
+    }
+
+    .hero-lower {
+      margin-top: 42px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .hero-description {
+      max-width: 550px;
+      color: rgba(255,255,255,.88);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      min-height: 54px;
+      padding: 0 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: .3s ease;
+    }
+
+    .button-white {
+      color: var(--green);
+      background: white;
+    }
+
+    .button-glass {
+      color: white;
+      border-color: rgba(255,255,255,.45);
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .button-dark {
+      color: white;
+      background: var(--green);
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-arrow {
+      font-size: 18px;
+      transition: transform .25s ease;
+    }
+
+    .button:hover .button-arrow {
+      transform: translateX(4px);
+    }
+
+    .hero-bottom {
+      position: absolute;
+      z-index: 6;
+      right: 32px;
+      bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 55px;
+      height: 1px;
+      background: rgba(255,255,255,.65);
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: "";
+      display: block;
+      width: 50%;
+      height: 100%;
+      background: white;
+      animation: scrollPulse 2s infinite;
+    }
+
+    @keyframes scrollPulse {
+      0% { transform: translateX(-120%); }
+      100% { transform: translateX(230%); }
+    }
+
+    /* ======================================================
+       INTRO
+    ====================================================== */
+
+    .intro {
+      padding: 145px 0 125px;
+      background: var(--cream);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: .75fr 2.25fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .intro-label {
+      padding-top: 15px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .intro-copy h2 {
+      max-width: 1100px;
+      font-size: clamp(48px, 6.4vw, 94px);
+    }
+
+    .intro-copy h2 span {
+      color: #849188;
+      font-style: italic;
+    }
+
+    .intro-bottom {
+      margin-top: 54px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: end;
+    }
+
+    .intro-bottom p {
+      max-width: 590px;
+    }
+
+    .text-link {
+      width: fit-content;
+      padding-bottom: 7px;
+      border-bottom: 1px solid var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* ======================================================
+       SERVICES
+    ====================================================== */
+
+    .services {
+      padding: 125px 0;
+      color: white;
+      background: var(--green);
+    }
+
+    .services-head {
+      margin-bottom: 68px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 50px;
+    }
+
+    .services-head p {
+      max-width: 410px;
+      color: rgba(255,255,255,.7);
+      line-height: 1.7;
+    }
+
+    .service-stack {
+      display: grid;
+      gap: 20px;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 530px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+
+    .service-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 1.1s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .service-card:hover img {
+      transform: scale(1.055);
+    }
+
+    .service-shade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(10,30,22,.77),
+          rgba(10,30,22,.2) 65%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(10,30,22,.45),
+          transparent 50%
+        );
+    }
+
+    .service-number {
+      position: absolute;
+      top: 32px;
+      left: 34px;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+    }
+
+    .service-content {
+      position: absolute;
+      left: 40px;
+      right: 40px;
+      bottom: 38px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+    }
+
+    .service-content h3 {
+      max-width: 800px;
+      font-size: clamp(44px, 6vw, 82px);
+    }
+
+    .service-content p {
+      max-width: 410px;
+      color: rgba(255,255,255,.82);
+      line-height: 1.65;
+    }
+
+    .circle-arrow {
+      flex: 0 0 auto;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.65);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      transition: .3s ease;
+    }
+
+    .service-card:hover .circle-arrow {
+      color: var(--green);
+      background: white;
+      transform: rotate(-35deg);
+    }
+
+    /* ======================================================
+       FEATURE / STATEMENT
+    ====================================================== */
+
+    .statement {
+      padding: 150px 0;
+      background: var(--sage-2);
+    }
+
+    .statement-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .statement-image {
+      position: relative;
+      min-height: 760px;
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+
+    .statement-image img {
+      position: absolute;
+      width: 100%;
+      height: 112%;
+      top: -6%;
+    }
+
+    .statement-badge {
+      position: absolute;
+      right: 25px;
+      bottom: 25px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      color: white;
+      background: var(--green);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-family: "Playfair Display", serif;
+      font-size: 19px;
+      line-height: 1.2;
+      transform: rotate(7deg);
+    }
+
+    .statement-copy h2 {
+      margin-bottom: 35px;
+      font-size: clamp(50px, 5.7vw, 82px);
+    }
+
+    .statement-copy p {
+      max-width: 570px;
+      margin-bottom: 35px;
+    }
+
+    /* ======================================================
+       PROCESS
+    ====================================================== */
+
+    .process {
+      padding: 140px 0;
+      background: var(--cream);
+    }
+
+    .process-head {
+      margin-bottom: 70px;
+      display: grid;
+      grid-template-columns: 1.4fr .6fr;
+      gap: 60px;
+      align-items: end;
+    }
+
+    .process-head p {
+      max-width: 470px;
+    }
+
+    .process-grid {
+      border-top: 1px solid var(--line);
+    }
+
+    .process-row {
+      padding: 32px 5px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr 50px;
+      gap: 30px;
+      align-items: center;
+      transition: .3s ease;
+    }
+
+    .process-row:hover {
+      padding-left: 20px;
+      padding-right: 20px;
+      background: rgba(255,255,255,.55);
+    }
+
+    .process-num {
+      color: #8c958f;
+      font-size: 12px;
+    }
+
+    .process-row h3 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(28px, 3vw, 43px);
+      font-weight: 500;
+    }
+
+    .process-row p {
+      max-width: 480px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .process-arrow {
+      font-size: 22px;
+      transition: .3s ease;
+    }
+
+    .process-row:hover .process-arrow {
+      transform: translateX(7px);
+    }
+
+    /* ======================================================
+       PROJECTS
+    ====================================================== */
+
+    .projects {
+      padding: 135px 0;
+      color: white;
+      background: #10281f;
+    }
+
+    .projects-head {
+      margin-bottom: 62px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 50px;
+    }
+
+    .projects-head .section-title {
+      max-width: 820px;
+    }
+
+    .projects-head p {
+      max-width: 420px;
+      color: rgba(255,255,255,.68);
+      line-height: 1.7;
+    }
+
+    .featured-project {
+      position: relative;
+      height: min(78vh, 850px);
+      min-height: 610px;
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+
+    .featured-project img {
+      position: absolute;
+      width: 100%;
+      height: 108%;
+      top: -4%;
+    }
+
+    .featured-project::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          0deg,
+          rgba(7,20,15,.72),
+          transparent 55%
+        );
+    }
+
+    .project-info {
+      position: absolute;
+      z-index: 2;
+      left: 38px;
+      right: 38px;
+      bottom: 35px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .project-info span {
+      display: block;
+      margin-bottom: 9px;
+      font-size: 11px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .project-info h3 {
+      font-size: clamp(40px, 5vw, 70px);
+    }
+
+    .gallery-grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .gallery-item {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+      border-radius: 22px;
+      background: #29453a;
+    }
+
+    .gallery-item:nth-child(3n) {
+      grid-column: 1 / -1;
+      height: 640px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      transition: transform .8s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.045);
+    }
+
+    /* ======================================================
+       TESTIMONIAL
+    ====================================================== */
+
+    .testimonial {
+      padding: 150px 0;
+      background: var(--warm);
+    }
+
+    .testimonial-inner {
+      max-width: 1160px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .quote-mark {
+      margin-bottom: 30px;
+      color: var(--green);
+      font-family: "Playfair Display", serif;
+      font-size: 80px;
+      line-height: .5;
+    }
+
+    .testimonial blockquote {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(38px, 5vw, 68px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+    }
+
+    .testimonial-person {
+      margin-top: 37px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .testimonial-person span {
+      display: block;
+      margin-top: 7px;
+      color: #727a74;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    /* ======================================================
+       SERVICE AREA / MAP
+    ====================================================== */
+
+    .service-area {
+      padding: 140px 0;
+      background: var(--sage-2);
+    }
+
+    .area-grid {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .area-copy h2 {
+      margin-bottom: 30px;
+      font-size: clamp(48px, 5.6vw, 80px);
+    }
+
+    .area-copy > p {
+      max-width: 530px;
+      margin-bottom: 40px;
+    }
+
+    .area-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 25px;
+      border-top: 1px solid var(--line);
+    }
+
+    .area-list span {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .map-wrap {
+      position: relative;
+      min-height: 680px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: #d9ded8;
+    }
+
+    .map-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: saturate(.65) contrast(.95);
+    }
+
+    .map-card {
+      position: absolute;
+      z-index: 3;
+      left: 25px;
+      bottom: 25px;
+      width: min(330px, calc(100% - 50px));
+      padding: 24px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.95);
+      box-shadow: 0 15px 50px rgba(0,0,0,.13);
+      backdrop-filter: blur(12px);
+    }
+
+    .map-card small {
+      display: block;
+      margin-bottom: 7px;
+      color: #79817c;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+    }
+
+    .map-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+      font-weight: 500;
+    }
+
+    .map-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ======================================================
+       ESTIMATE
+    ====================================================== */
+
+    .estimate {
+      position: relative;
+      padding: 145px 0;
+      overflow: hidden;
+      color: white;
+      background: var(--green);
+    }
+
+    .estimate::before {
+      content: "";
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      right: -250px;
+      top: -320px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 50%;
+    }
+
+    .estimate::after {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      right: -150px;
+      top: -220px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 50%;
+    }
+
+    .estimate-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 100px;
+      align-items: start;
+    }
+
+    .estimate-copy h2 {
+      margin-bottom: 30px;
+      font-size: clamp(53px, 6vw, 88px);
+    }
+
+    .estimate-copy p {
+      max-width: 510px;
+      color: rgba(255,255,255,.72);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .contact-details {
+      margin-top: 55px;
+      display: grid;
+      gap: 13px;
+    }
+
+    .contact-details a {
+      width: fit-content;
+      color: rgba(255,255,255,.9);
+      font-size: 14px;
+      border-bottom: 1px solid rgba(255,255,255,.3);
+      padding-bottom: 4px;
+    }
+
+    .estimate-form {
+      padding: 42px;
+      border-radius: 26px;
+      color: var(--ink);
+      background: white;
+      box-shadow: 0 35px 80px rgba(0,0,0,.18);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      margin-bottom: 21px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 8px;
+      color: #59615c;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid #cfd5d0;
+      border-radius: 0;
+      outline: none;
+      padding: 12px 2px 13px;
+      color: var(--ink);
+      background: transparent;
+      transition: border-color .2s ease;
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--green);
+    }
+
+    .estimate-form .button {
+      width: 100%;
+      margin-top: 10px;
+      border: 0;
+    }
+
+    .form-note {
+      margin-top: 17px;
+      color: #8b938e;
+      font-size: 11px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    /* ======================================================
+       FOOTER
+    ====================================================== */
+
+    footer {
+      padding: 80px 0 28px;
+      color: white;
+      background: #0b1d16;
+    }
+
+    .footer-top {
+      padding-bottom: 70px;
+      display: grid;
+      grid-template-columns: 1.5fr .6fr .6fr .6fr;
+      gap: 60px;
+    }
+
+    .footer-brand {
+      max-width: 440px;
+    }
+
+    .footer-brand .brand {
+      margin-bottom: 22px;
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,.55);
+      line-height: 1.7;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 18px;
+      color: rgba(255,255,255,.42);
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .footer-column a {
+      display: block;
+      width: fit-content;
+      margin: 10px 0;
+      color: rgba(255,255,255,.82);
+      font-size: 13px;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      padding-top: 25px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      color: rgba(255,255,255,.4);
+      font-size: 11px;
+    }
+
+    /* ======================================================
+       SCROLL REVEALS
+    ====================================================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(42px);
+      transition:
+        opacity .85s cubic-bezier(.2,.7,.2,1),
+        transform .85s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal-delay-1 {
+      transition-delay: .1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: .2s;
+    }
+
+    /* ======================================================
+       MOBILE
+    ====================================================== */
+
+    @media (max-width: 1050px) {
+      .desktop-nav,
+      .nav-cta,
+      .mega-menu {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .mobile-menu {
+        padding: 0 25px;
+        max-height: 0;
+        overflow: hidden;
+        display: block;
+        opacity: 0;
+        transition: .35s ease;
+      }
+
+      .nav-shell.menu-open .mobile-menu {
+        max-height: 500px;
+        padding-bottom: 24px;
+        opacity: 1;
+      }
+
+      .mobile-menu a {
+        display: block;
+        padding: 14px 0;
+        border-top: 1px solid #e6e9e6;
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .hero-lower,
+      .services-head,
+      .projects-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .statement-grid,
+      .area-grid,
+      .estimate-grid {
+        grid-template-columns: 1fr;
+        gap: 65px;
+      }
+
+      .process-head {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(calc(100% - 34px), var(--max));
+      }
+
+      .site-header {
+        top: 10px;
+      }
+
+      .nav-shell {
+        width: calc(100% - 20px);
+        background: rgba(255,255,255,.96);
+        color: var(--ink);
+        box-shadow: 0 10px 30px rgba(0,0,0,.1);
+      }
+
+      .nav-main {
+        min-height: 64px;
+        padding: 0 15px 0 19px;
+      }
+
+      .brand {
+        font-size: 15px;
+      }
+
+      .brand-mark {
+        width: 31px;
+        height: 31px;
+      }
+
+      .hero {
+        min-height: 700px;
+        height: 100svh;
+      }
+
+      .hero-content {
+        padding-top: 120px;
+        padding-bottom: 55px;
+      }
+
+      .hero h1 {
+        font-size: clamp(56px, 17vw, 90px);
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .hero-lower {
+        margin-top: 30px;
+        gap: 25px;
+      }
+
+      .hero-actions {
+        width: 100%;
+      }
+
+      .hero-actions .button {
+        flex: 1;
+      }
+
+      .hero-bottom {
+        display: none;
+      }
+
+      .intro,
+      .services,
+      .statement,
+      .process,
+      .projects,
+      .testimonial,
+      .service-area,
+      .estimate {
+        padding: 90px 0;
+      }
+
+      .intro-bottom {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .section-title {
+        font-size: clamp(43px, 13vw, 67px);
+      }
+
+      .service-card {
+        min-height: 600px;
+      }
+
+      .service-content {
+        left: 24px;
+        right: 24px;
+        bottom: 25px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .service-content h3 {
+        font-size: 48px;
+      }
+
+      .statement-image {
+        min-height: 560px;
+      }
+
+      .statement-badge {
+        width: 120px;
+        height: 120px;
+        font-size: 16px;
+      }
+
+      .process-row {
+        grid-template-columns: 42px 1fr 30px;
+        gap: 15px;
+      }
+
+      .process-row p {
+        grid-column: 2 / -1;
+      }
+
+      .featured-project {
+        min-height: 580px;
+      }
+
+      .project-info {
+        left: 24px;
+        right: 24px;
+        bottom: 24px;
+      }
+
+      .project-info .circle-arrow {
+        display: none;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-item,
+      .gallery-item:nth-child(3n) {
+        grid-column: auto;
+        height: 430px;
+      }
+
+      .map-wrap {
+        min-height: 550px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .estimate-form {
+        padding: 28px 22px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- =========================
-     NAV
-========================= -->
+  <!-- ====================================================
+       NAV
+  ===================================================== -->
 
-<nav class="site-nav" id="site-nav">
+  <header class="site-header">
+    <div class="nav-shell" id="navShell">
 
-  <div class="nav-inner">
+      <div class="nav-main">
 
-    <a class="logo" href="#home" id="nav-business-name">
-      EVERGREEN OUTDOOR CO.
-    </a>
+        <a href="#home" class="brand">
+          <span class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 20V8M12 12C8 12 5.5 9.8 5 6c4 0 6.5 2 7 6Zm0 3c4 0 6.5-2.2 7-6-4 0-6.5 2-7 6Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+            </svg>
+          </span>
 
-    <ul class="desktop-menu">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#service-area">Service Areas</a></li>
-      <li><a href="#process">Our Process</a></li>
-      <li><a href="#about">About</a></li>
-      <li>
-        <a class="nav-cta" href="#estimate">
-          Request Estimate
+          <span id="nav-business-name">Evergreen Outdoor Co.</span>
         </a>
-      </li>
-    </ul>
 
-    <button
-      class="mobile-toggle"
-      id="mobile-toggle"
-      aria-label="Open menu"
-      aria-expanded="false">
-      ☰
-    </button>
+        <nav class="desktop-nav">
+          <button class="nav-dropdown-trigger">Services</button>
+          <a href="#projects">Projects</a>
+          <a href="#service-area">Service Areas</a>
+          <a href="#process">Our Process</a>
+          <a href="#about">About</a>
+        </nav>
 
-  </div>
+        <a href="#estimate" class="nav-cta">Request Estimate</a>
 
-  <div class="mega-menu">
-    <div class="mega-inner">
+        <button
+          class="mobile-toggle"
+          id="mobileToggle"
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+        </button>
 
-      <div>
-        <h4>Services</h4>
-        <a href="#services">Landscape Design</a>
-        <a href="#services">Hardscaping</a>
-        <a href="#services">Lawn Care</a>
-        <a href="#services">Outdoor Living</a>
       </div>
 
-      <div>
-        <h4>Explore</h4>
-        <a href="#projects">Featured Projects</a>
+      <div class="mega-menu">
+        <div class="mega-inner">
+
+          <a href="#services" class="mega-feature">
+            <span>Outdoor living, reimagined</span>
+            <strong>
+              Designed for the way you actually want to live outside.
+            </strong>
+          </a>
+
+          <div class="mega-column">
+            <h4>Services</h4>
+            <a href="#services">Landscape Design</a>
+            <a href="#services">Hardscaping</a>
+            <a href="#services">Outdoor Living</a>
+            <a href="#services">Property Care</a>
+          </div>
+
+          <div class="mega-column">
+            <h4>Explore</h4>
+            <a href="#projects">Recent Projects</a>
+            <a href="#process">Our Process</a>
+            <a href="#about">About Us</a>
+            <a href="#estimate">Request Estimate</a>
+          </div>
+
+          <div class="mega-column">
+            <h4>Service Areas</h4>
+            <a href="#service-area">South Jersey</a>
+            <a href="#service-area">Atlantic County</a>
+            <a href="#service-area">Cape May County</a>
+            <a href="#service-area">Nearby Communities</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#service-area">Service Areas</a>
         <a href="#process">Our Process</a>
-        <a href="#about">About Us</a>
-        <a href="#estimate">Start a Project</a>
-      </div>
-
-      <div>
-        <h4>Service Areas</h4>
-        <a href="#service-area">New Jersey</a>
-        <a href="#service-area">South Jersey</a>
-        <a href="#service-area">Shore Communities</a>
-        <a href="#service-area">Surrounding Areas</a>
-      </div>
-
-      <div>
-        <h4>Resources</h4>
-        <a href="#estimate">Request an Estimate</a>
-        <a href="#projects">Project Inspiration</a>
-        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a href="#estimate">Request Estimate</a>
       </div>
 
     </div>
-  </div>
-
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="#services">Services</a>
-    <a href="#projects">Projects</a>
-    <a href="#service-area">Service Areas</a>
-    <a href="#process">Our Process</a>
-    <a href="#about">About</a>
-    <a href="#estimate">Request Estimate</a>
-  </div>
-
-</nav>
-
-
-<!-- =========================
-     VIDEO HERO
-========================= -->
-
-<header class="hero" id="home">
-
-  <!--
-    VIDEO READY:
-    Upload a landscaping video to:
-    assets/hero-video.mp4
-
-    Once that file exists in GitHub, it will automatically
-    play here.
-  -->
-
-  <video
-    class="hero-video"
-    autoplay
-    muted
-    loop
-    playsinline
-    poster="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=2000&q=88">
-
-    <source
-      src="assets/hero-video.mp4"
-      type="video/mp4">
-
-  </video>
-
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-
-    <div class="eyebrow">
-      Landscape • Hardscape • Outdoor Living
-    </div>
-
-    <h1 id="hero-headline">
-      Outdoor spaces built differently.
-    </h1>
-
-    <p class="hero-copy">
-      Thoughtful landscapes, beautiful outdoor living spaces
-      and dependable property care designed around the way
-      you live.
-    </p>
-
-    <div class="button-row">
-      <a class="btn" href="#estimate">
-        Start Your Project
-      </a>
-
-      <a class="btn btn-outline" href="#projects">
-        Explore Our Work
-      </a>
-    </div>
-
-  </div>
-
-  <div class="scroll-hint">
-    Scroll to explore ↓
-  </div>
-
-</header>
-
-
-<!-- =========================
-     INTRO
-========================= -->
-
-<section class="intro">
-
-  <div class="intro-label reveal">
-    Designed for the outdoors
-  </div>
-
-  <div class="intro-copy reveal">
-
-    <h2>
-      Your property should feel as good outside as it does inside.
-    </h2>
-
-    <p>
-      We create outdoor spaces that bring together thoughtful
-      design, quality craftsmanship and dependable maintenance.
-    </p>
-
-    <p>
-      From a simple property refresh to a complete backyard
-      transformation, every project starts by understanding
-      what you want from your space.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     SERVICES
-========================= -->
-
-<section class="services-section" id="services">
-
-  <div class="section-head reveal">
-
-    <div class="eyebrow" style="color:#345f47">
-      What We Do
-    </div>
-
-    <h2>
-      One team. Your entire outdoor space.
-    </h2>
-
-    <p>
-      Design, construction and ongoing care brought together
-      through one streamlined process.
-    </p>
-
-  </div>
-
-  <div class="services-grid">
-
-    <article class="service-card reveal">
-
-      <img
-        src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1200&q=88"
-        alt="Professional landscape design">
-
-      <div class="service-info">
-        <div class="service-number">01</div>
-        <h3>Landscape Design</h3>
-        <p>
-          Plantings, garden beds, property layouts and
-          complete landscape transformations.
-        </p>
-      </div>
-
-    </article>
-
-    <article class="service-card reveal delay-1">
-
-      <img
-        src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1200&q=88"
-        alt="Outdoor patio and hardscaping">
-
-      <div class="service-info">
-        <div class="service-number">02</div>
-        <h3>Hardscaping</h3>
-        <p>
-          Patios, walkways, retaining walls, fire features
-          and custom outdoor living spaces.
-        </p>
-      </div>
-
-    </article>
-
-    <article class="service-card reveal delay-2">
-
-      <img
-        src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=88"
-        alt="Lawn care and property maintenance">
-
-      <div class="service-info">
-        <div class="service-number">03</div>
-        <h3>Property Care</h3>
-        <p>
-          Lawn care, trimming, seasonal cleanups and
-          dependable property maintenance.
-        </p>
-      </div>
-
-    </article>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     PROCESS
-========================= -->
-
-<section class="process" id="process">
-
-  <div class="section-head reveal">
-
-    <div class="eyebrow">
-      How It Works
-    </div>
-
-    <h2>
-      From first conversation to finished landscape.
-    </h2>
-
-    <p>
-      A straightforward process keeps your project organized
-      from the first idea through the final walkthrough.
-    </p>
-
-  </div>
-
-  <div class="process-grid">
-
-    <div class="process-item reveal">
-      <span class="process-num">01</span>
-      <h3>Consult</h3>
-      <p>
-        Tell us about your property, goals,
-        budget and ideas.
-      </p>
-    </div>
-
-    <div class="process-item reveal delay-1">
-      <span class="process-num">02</span>
-      <h3>Design</h3>
-      <p>
-        We develop a plan around your property
-        and how you want to use it.
-      </p>
-    </div>
-
-    <div class="process-item reveal delay-2">
-      <span class="process-num">03</span>
-      <h3>Build</h3>
-      <p>
-        Our team brings the design to life
-        with careful craftsmanship.
-      </p>
-    </div>
-
-    <div class="process-item reveal delay-3">
-      <span class="process-num">04</span>
-      <h3>Enjoy</h3>
-      <p>
-        We complete a final walkthrough and
-        leave you with a space built to enjoy.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section class="about" id="about">
-
-  <div class="about-media reveal">
-
-    <img
-      id="about-image"
-      src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1400&q=88"
-      alt="Completed outdoor living project">
-
-  </div>
-
-  <div class="reveal">
-
-    <div class="eyebrow" style="color:#345f47">
-      About Us
-    </div>
-
-    <h2>
-      Built around better outdoor living.
-    </h2>
-
-    <p class="about-text" id="about-text">
-      Evergreen Outdoor Co. creates and maintains beautiful
-      outdoor spaces designed around the way homeowners
-      actually use their properties.
-    </p>
-
-    <div class="stats">
-
-      <div class="stat">
-        <strong>100%</strong>
-        <span>Quality focused</span>
-      </div>
-
-      <div class="stat">
-        <strong>3</strong>
-        <span>Core services</span>
-      </div>
-
-      <div class="stat">
-        <strong>1</strong>
-        <span>Dedicated team</span>
-      </div>
+  </header>
+
+
+  <!-- ====================================================
+       HERO
+  ===================================================== -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-media">
+
+      <div class="hero-poster" id="heroPoster"></div>
+
+      <!--
+        Upload your future B-roll video to:
+        assets/landscaping-hero.mp4
+      -->
+
+      <video
+        class="hero-video"
+        id="heroVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source
+          src="assets/landscaping-hero.mp4"
+          type="video/mp4"
+        >
+      </video>
 
     </div>
 
-  </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-grain"></div>
 
-</section>
+    <div class="container hero-content" id="heroContent">
 
+      <div class="hero-copy">
 
-<!-- =========================
-     PROJECTS
-========================= -->
-
-<section class="projects" id="projects">
-
-  <div class="section-head reveal">
-
-    <div class="eyebrow" style="color:#345f47">
-      Selected Work
-    </div>
-
-    <h2>
-      Spaces designed to be lived in.
-    </h2>
-
-    <p>
-      Explore landscaping, hardscaping and outdoor
-      transformations designed around each property.
-    </p>
-
-  </div>
-
-  <div
-    class="feature-project reveal"
-    id="feature-project">
-
-    <img
-      id="bottom-image"
-      src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=88"
-      alt="Featured landscaping project">
-
-    <div class="project-overlay">
-      <div>
-        <div class="eyebrow">
-          Featured Project
+        <div class="hero-kicker">
+          Landscape Design • Build • Care
         </div>
 
-        <h3>
-          Backyard Transformation
-        </h3>
+        <h1 class="display" id="hero-headline">
+          Outdoor spaces,
+          <em>elevated.</em>
+        </h1>
 
-        <p>
-          Landscape • Hardscape • Outdoor Living
+        <div class="hero-lower">
+
+          <p class="hero-description">
+            Thoughtful landscapes, enduring craftsmanship and outdoor
+            spaces designed around the way you live.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#estimate" class="button button-white">
+              Start Your Project
+              <span class="button-arrow">→</span>
+            </a>
+
+            <a href="#projects" class="button button-glass">
+              Explore Our Work
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      Scroll to explore
+      <span class="scroll-line"></span>
+    </div>
+
+  </section>
+
+
+  <!-- ====================================================
+       INTRO
+  ===================================================== -->
+
+  <section class="intro" id="about">
+    <div class="container intro-grid">
+
+      <div class="intro-label reveal">
+        Built Outside
+      </div>
+
+      <div class="intro-copy">
+
+        <h2 class="display reveal">
+          We don't just maintain landscapes.
+          We create places
+          <span>worth coming home to.</span>
+        </h2>
+
+        <div class="intro-bottom">
+
+          <p class="body-copy reveal reveal-delay-1" id="about-text">
+            Evergreen Outdoor Co. brings together thoughtful design,
+            quality materials and detail-driven craftsmanship to create
+            outdoor environments that feel natural, functional and
+            completely your own.
+          </p>
+
+          <a href="#services" class="text-link reveal reveal-delay-2">
+            Discover what we do →
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====================================================
+       SERVICES
+  ===================================================== -->
+
+  <section class="services" id="services">
+
+    <div class="container">
+
+      <div class="services-head">
+
+        <div>
+          <div class="eyebrow reveal">What We Do</div>
+
+          <h2 class="display section-title reveal">
+            From first sketch to final detail.
+          </h2>
+        </div>
+
+        <p class="reveal">
+          One team. One vision. A complete approach to creating,
+          building and caring for exceptional outdoor spaces.
         </p>
+
+      </div>
+
+      <div class="service-stack">
+
+        <article class="service-card reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=2200&q=90"
+            alt="Landscape design"
+          >
+
+          <div class="service-shade"></div>
+
+          <div class="service-number">01</div>
+
+          <div class="service-content">
+
+            <div>
+              <h3 class="display">Landscape Design</h3>
+              <p>
+                Purposeful planting, beautiful structure and a plan
+                designed specifically around your property.
+              </p>
+            </div>
+
+            <div class="circle-arrow">↗</div>
+
+          </div>
+
+        </article>
+
+
+        <article class="service-card reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=2200&q=90"
+            alt="Outdoor patio and hardscaping"
+          >
+
+          <div class="service-shade"></div>
+
+          <div class="service-number">02</div>
+
+          <div class="service-content">
+
+            <div>
+              <h3 class="display">Outdoor Living</h3>
+              <p>
+                Patios, walkways, gathering spaces and hardscapes
+                engineered to look beautiful and perform for years.
+              </p>
+            </div>
+
+            <div class="circle-arrow">↗</div>
+
+          </div>
+
+        </article>
+
+
+        <article class="service-card reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=2200&q=90"
+            alt="Property care"
+          >
+
+          <div class="service-shade"></div>
+
+          <div class="service-number">03</div>
+
+          <div class="service-content">
+
+            <div>
+              <h3 class="display">Property Care</h3>
+              <p>
+                Detail-focused seasonal and ongoing landscape care
+                designed to keep your property looking its best.
+              </p>
+            </div>
+
+            <div class="circle-arrow">↗</div>
+
+          </div>
+
+        </article>
+
       </div>
     </div>
-
-  </div>
-
-  <div class="gallery" id="gallery">
-
-    <img
-      class="reveal"
-      src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1000&q=85"
-      alt="Landscaping project">
-
-    <img
-      class="reveal delay-1"
-      src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1000&q=85"
-      alt="Hardscaping project">
-
-    <img
-      class="reveal delay-2"
-      src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1000&q=85"
-      alt="Outdoor property project">
-
-  </div>
-
-</section>
+  </section>
 
 
-<!-- =========================
-     TESTIMONIAL
-========================= -->
+  <!-- ====================================================
+       ABOUT FEATURE
+  ===================================================== -->
 
-<section class="testimonial">
+  <section class="statement">
 
-  <div class="reveal">
+    <div class="container statement-grid">
 
-    <div class="stars">
-      ★★★★★
+      <div class="statement-image reveal">
+
+        <img
+          id="about-image"
+          src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1800&q=90"
+          alt="Landscaping project"
+        >
+
+        <div class="statement-badge">
+          Built with<br>
+          intention.
+        </div>
+
+      </div>
+
+      <div class="statement-copy">
+
+        <div class="eyebrow reveal">
+          The Evergreen Standard
+        </div>
+
+        <h2 class="display reveal">
+          Details make the difference.
+        </h2>
+
+        <p class="body-copy reveal">
+          Great outdoor spaces aren't created by accident. Every
+          material, grade, planting and finishing detail has a purpose.
+          We approach each property with the same goal: build it right,
+          make it beautiful and create something that lasts.
+        </p>
+
+        <a href="#estimate" class="button button-dark reveal">
+          Work With Us
+          <span class="button-arrow">→</span>
+        </a>
+
+      </div>
+
     </div>
+  </section>
 
-    <div class="quote">
-      “The goal isn't just to make a property look better.
-      It's to create an outdoor space people genuinely
-      want to spend time in.”
+
+  <!-- ====================================================
+       PROCESS
+  ===================================================== -->
+
+  <section class="process" id="process">
+
+    <div class="container">
+
+      <div class="process-head">
+
+        <div>
+          <div class="eyebrow reveal">Our Process</div>
+
+          <h2 class="display section-title reveal">
+            Clear from day one.
+          </h2>
+        </div>
+
+        <p class="body-copy reveal">
+          From the first conversation through the final walkthrough,
+          you'll know what's happening, what's next and who to call.
+        </p>
+
+      </div>
+
+      <div class="process-grid">
+
+        <div class="process-row reveal">
+          <span class="process-num">01</span>
+          <h3>Consult</h3>
+          <p>
+            We meet, walk the property and learn what you want from
+            the space.
+          </p>
+          <span class="process-arrow">→</span>
+        </div>
+
+        <div class="process-row reveal">
+          <span class="process-num">02</span>
+          <h3>Design</h3>
+          <p>
+            We shape the vision into a practical, cohesive plan built
+            around your property.
+          </p>
+          <span class="process-arrow">→</span>
+        </div>
+
+        <div class="process-row reveal">
+          <span class="process-num">03</span>
+          <h3>Build</h3>
+          <p>
+            Our team brings the plan to life with quality materials
+            and careful craftsmanship.
+          </p>
+          <span class="process-arrow">→</span>
+        </div>
+
+        <div class="process-row reveal">
+          <span class="process-num">04</span>
+          <h3>Enjoy</h3>
+          <p>
+            We complete the details, walk the project with you and
+            leave you with a space ready to live in.
+          </p>
+          <span class="process-arrow">→</span>
+        </div>
+
+      </div>
     </div>
+  </section>
 
-    <div class="quote-name">
-      Evergreen Outdoor Co.
+
+  <!-- ====================================================
+       PROJECTS
+  ===================================================== -->
+
+  <section class="projects" id="projects">
+
+    <div class="container">
+
+      <div class="projects-head">
+
+        <div>
+          <div class="eyebrow reveal">Selected Work</div>
+
+          <h2 class="display section-title reveal">
+            Spaces made to be lived in.
+          </h2>
+        </div>
+
+        <p class="reveal">
+          A look at landscapes and outdoor environments built around
+          real homes, real properties and real life.
+        </p>
+
+      </div>
+
+      <div class="featured-project reveal">
+
+        <img
+          id="bottom-image"
+          src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=2400&q=90"
+          alt="Featured landscaping project"
+        >
+
+        <div class="project-info">
+
+          <div>
+            <span>Featured Project • New Jersey</span>
+            <h3 class="display">
+              Backyard Transformation
+            </h3>
+          </div>
+
+          <div class="circle-arrow">↗</div>
+
+        </div>
+
+      </div>
+
+      <div class="gallery-grid" id="gallery-grid">
+
+        <div class="gallery-item reveal">
+          <img
+            src="https://images.unsplash.com/photo-1558521558-037f1cb027c5?auto=format&fit=crop&w=1600&q=90"
+            alt="Landscape project"
+          >
+        </div>
+
+        <div class="gallery-item reveal">
+          <img
+            src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1600&q=90"
+            alt="Outdoor living project"
+          >
+        </div>
+
+        <div class="gallery-item reveal">
+          <img
+            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=2200&q=90"
+            alt="Outdoor project"
+          >
+        </div>
+
+      </div>
+
     </div>
-
-  </div>
-
-</section>
+  </section>
 
 
-<!-- =========================
-     SERVICE AREA MAP
-========================= -->
+  <!-- ====================================================
+       TESTIMONIAL
+  ===================================================== -->
 
-<section class="location" id="service-area">
+  <section class="testimonial">
 
-  <div class="reveal">
+    <div class="container testimonial-inner reveal">
 
-    <div class="eyebrow" style="color:#345f47">
-      Service Area
+      <div class="quote-mark">“</div>
+
+      <blockquote>
+        The kind of outdoor space that completely changes how you
+        experience your home.
+      </blockquote>
+
+      <div class="testimonial-person">
+        Sample Client
+        <span>New Jersey Homeowner • Demo Testimonial</span>
+      </div>
+
     </div>
+  </section>
 
-    <h2>
-      Proudly serving New Jersey.
-    </h2>
 
-    <p>
-      This demo map is centered in New Jersey. When the site
-      is prepared for a real landscaping company, this section
-      can be updated with its actual service territory.
-    </p>
+  <!-- ====================================================
+       SERVICE AREA / MAP
+  ===================================================== -->
 
-    <div class="area-list">
-      <span>New Jersey</span>
-      <span>South Jersey</span>
-      <span>Shore Communities</span>
-      <span>Surrounding Areas</span>
+  <section class="service-area" id="service-area">
+
+    <div class="container area-grid">
+
+      <div class="area-copy">
+
+        <div class="eyebrow reveal">
+          Where We Work
+        </div>
+
+        <h2 class="display reveal">
+          Proudly serving New Jersey.
+        </h2>
+
+        <p class="body-copy reveal">
+          This demo currently uses a general New Jersey service area.
+          When the site goes to a real landscaping company, we can
+          replace this with their exact towns, counties and location.
+        </p>
+
+        <div class="area-list reveal">
+          <span>Atlantic County</span>
+          <span>Cape May County</span>
+          <span>South Jersey</span>
+          <span>Shore Communities</span>
+          <span>Residential</span>
+          <span>Commercial</span>
+        </div>
+
+      </div>
+
+      <div class="map-wrap reveal">
+
+        <iframe
+          title="New Jersey service area"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=New%20Jersey&z=8&output=embed">
+        </iframe>
+
+        <div class="map-card">
+          <small>Service Area</small>
+          <strong>New Jersey</strong>
+          <p>
+            Serving homeowners and properties throughout the region.
+            Contact us to confirm service at your location.
+          </p>
+        </div>
+
+      </div>
+
     </div>
-
-  </div>
-
-  <div class="map-wrap reveal">
-
-    <iframe
-      title="New Jersey service area map"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps?q=New%20Jersey&z=8&output=embed">
-    </iframe>
-
-  </div>
-
-</section>
+  </section>
 
 
-<!-- =========================
-     ESTIMATE FORM
-========================= -->
+  <!-- ====================================================
+       ESTIMATE FORM
+  ===================================================== -->
 
-<section class="estimate" id="estimate">
+  <section class="estimate" id="estimate">
 
-  <div class="estimate-intro reveal">
+    <div class="container estimate-grid">
 
-    <div class="eyebrow" style="color:#345f47">
-      Let's Talk
+      <div class="estimate-copy">
+
+        <div class="eyebrow reveal">
+          Start A Project
+        </div>
+
+        <h2 class="display reveal">
+          Let's build something outside.
+        </h2>
+
+        <p class="reveal">
+          Tell us a little about your property and what you have in
+          mind. We'll use the information below to start the
+          conversation.
+        </p>
+
+        <div class="contact-details reveal">
+          <a id="phone-link" href="tel:6095550123">
+            <span id="phone-text">(609) 555-0123</span>
+          </a>
+
+          <a id="email-link" href="mailto:hello@evergreenoutdoorco.com">
+            <span id="email-text">hello@evergreenoutdoorco.com</span>
+          </a>
+        </div>
+
+      </div>
+
+
+      <!-- Netlify-ready form -->
+
+      <form
+        class="estimate-form reveal"
+        name="estimate-request"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+      >
+
+        <input
+          type="hidden"
+          name="form-name"
+          value="estimate-request"
+        >
+
+        <p hidden>
+          <label>
+            Don't fill this out:
+            <input name="bot-field">
+          </label>
+        </p>
+
+        <div class="form-row">
+
+          <div class="field">
+            <label for="first-name">First Name</label>
+            <input
+              id="first-name"
+              name="first-name"
+              type="text"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="last-name">Last Name</label>
+            <input
+              id="last-name"
+              name="last-name"
+              type="text"
+              required
+            >
+          </div>
+
+        </div>
+
+        <div class="form-row">
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+            >
+          </div>
+
+        </div>
+
+        <div class="field">
+          <label for="project-type">What can we help with?</label>
+
+          <select
+            id="project-type"
+            name="project-type"
+            required
+          >
+            <option value="" selected disabled>
+              Select a service
+            </option>
+            <option>Landscape Design</option>
+            <option>Hardscaping</option>
+            <option>Outdoor Living</option>
+            <option>Property Care</option>
+            <option>Complete Property Transformation</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Tell us about your project</label>
+
+          <textarea
+            id="message"
+            name="message"
+            placeholder="What would you like to change or create?"
+            required
+          ></textarea>
+        </div>
+
+        <button class="button button-dark" type="submit">
+          Request My Estimate
+          <span class="button-arrow">→</span>
+        </button>
+
+        <p class="form-note">
+          Demo website. Business information and service areas can be
+          replaced with the client's real information before launch.
+        </p>
+
+      </form>
+
     </div>
+  </section>
 
-    <h2>
-      Tell us what you need.
-    </h2>
 
-    <p>
-      Planning a new landscape, patio, property cleanup
-      or complete outdoor transformation? Tell us a little
-      about your project and we'll get the conversation started.
-    </p>
+  <!-- ====================================================
+       FOOTER
+  ===================================================== -->
 
-    <div class="contact-links" id="contact">
+  <footer>
 
-      <a
-        id="phone-link"
-        href="tel:+16095551234">
-        <span id="business-phone">
-          (609) 555-1234
+    <div class="container">
+
+      <div class="footer-top">
+
+        <div class="footer-brand">
+
+          <div class="brand">
+            <span class="brand-mark">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 20V8M12 12C8 12 5.5 9.8 5 6c4 0 6.5 2 7 6Zm0 3c4 0 6.5-2.2 7-6-4 0-6.5 2-7 6Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+
+            <span id="footer-business-name">
+              Evergreen Outdoor Co.
+            </span>
+          </div>
+
+          <p>
+            Thoughtful landscapes. Quality craftsmanship.
+            Outdoor spaces built to last.
+          </p>
+
+        </div>
+
+
+        <div class="footer-column">
+          <h4>Explore</h4>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#process">Process</a>
+          <a href="#about">About</a>
+        </div>
+
+
+        <div class="footer-column">
+          <h4>Services</h4>
+          <a href="#services">Landscape Design</a>
+          <a href="#services">Hardscaping</a>
+          <a href="#services">Outdoor Living</a>
+          <a href="#services">Property Care</a>
+        </div>
+
+
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <a href="#estimate">Request Estimate</a>
+          <a href="#service-area">Service Area</a>
+          <a id="footer-phone" href="tel:6095550123">
+            Call Us
+          </a>
+          <a id="footer-email" href="mailto:hello@evergreenoutdoorco.com">
+            Email Us
+          </a>
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © <span id="current-year"></span>
+          <span id="copyright-business-name">
+            Evergreen Outdoor Co.
+          </span>
         </span>
-      </a>
 
-      <a
-        id="email-link"
-        href="mailto:hello@evergreenoutdoorco.com">
-        <span id="business-email">
-          hello@evergreenoutdoorco.com
+        <span>
+          Landscape Design • Build • Care
         </span>
-      </a>
-
-    </div>
-
-  </div>
-
-
-  <!--
-    NETLIFY FORM:
-    Once Netlify processes a deployment containing this form,
-    submissions can appear in the site's Netlify Forms area.
-  -->
-
-  <form
-    class="estimate-form reveal"
-    name="estimate-request"
-    method="POST"
-    data-netlify="true"
-    netlify-honeypot="bot-field">
-
-    <input
-      type="hidden"
-      name="form-name"
-      value="estimate-request">
-
-    <p style="display:none">
-      <label>
-        Don't fill this out:
-        <input name="bot-field">
-      </label>
-    </p>
-
-    <div class="form-grid">
-
-      <div class="field">
-        <label for="first-name">
-          First Name *
-        </label>
-
-        <input
-          id="first-name"
-          name="first-name"
-          type="text"
-          autocomplete="given-name"
-          required>
-      </div>
-
-      <div class="field">
-        <label for="last-name">
-          Last Name *
-        </label>
-
-        <input
-          id="last-name"
-          name="last-name"
-          type="text"
-          autocomplete="family-name"
-          required>
-      </div>
-
-      <div class="field">
-        <label for="email">
-          Email *
-        </label>
-
-        <input
-          id="email"
-          name="email"
-          type="email"
-          autocomplete="email"
-          required>
-      </div>
-
-      <div class="field">
-        <label for="phone">
-          Phone Number
-        </label>
-
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          autocomplete="tel">
-      </div>
-
-      <div class="field full">
-
-        <label for="subject">
-          What can we help with? *
-        </label>
-
-        <select
-          id="subject"
-          name="subject"
-          required>
-
-          <option value="">
-            Select a project type
-          </option>
-
-          <option>
-            Landscape Design
-          </option>
-
-          <option>
-            Hardscaping / Patio
-          </option>
-
-          <option>
-            Lawn / Property Care
-          </option>
-
-          <option>
-            Complete Backyard Transformation
-          </option>
-
-          <option>
-            Other
-          </option>
-
-        </select>
-
-      </div>
-
-      <div class="field full">
-
-        <label for="message">
-          Tell Us About Your Project *
-        </label>
-
-        <textarea
-          id="message"
-          name="message"
-          placeholder="What are you looking to have done?"
-          required></textarea>
 
       </div>
 
     </div>
-
-    <button
-      class="form-submit"
-      type="submit">
-      Request My Estimate
-    </button>
-
-    <p class="form-note">
-      Demo website. Replace the contact information with the
-      client's real business information before launch.
-    </p>
-
-  </form>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-  <div class="footer-grid">
-
-    <div>
-
-      <div
-        class="footer-brand"
-        id="footer-business-name">
-        Evergreen Outdoor Co.
-      </div>
-
-      <p class="footer-copy">
-        Landscaping, hardscaping and outdoor living
-        designed around your property.
-      </p>
-
-    </div>
-
-    <div class="footer-col">
-
-      <h4>Services</h4>
-
-      <a href="#services">
-        Landscaping
-      </a>
-
-      <a href="#services">
-        Hardscaping
-      </a>
-
-      <a href="#services">
-        Property Care
-      </a>
-
-    </div>
-
-    <div class="footer-col">
-
-      <h4>Company</h4>
-
-      <a href="#about">
-        About
-      </a>
-
-      <a href="#projects">
-        Projects
-      </a>
-
-      <a href="#process">
-        Our Process
-      </a>
-
-    </div>
-
-    <div class="footer-col">
-
-      <h4>Start Here</h4>
-
-      <a href="#estimate">
-        Request Estimate
-      </a>
-
-      <a href="#service-area">
-        Service Areas
-      </a>
-
-      <a href="#contact">
-        Contact
-      </a>
-
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-
-    <span>
-      © <span id="year"></span>
-      Evergreen Outdoor Co.
-    </span>
-
-    <span>
-      Demo landscaping website
-    </span>
-
-  </div>
-
-</footer>
-
-
-<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-
-<script>
-
-/* =========================
-   YEAR
-========================= */
-
-document.getElementById("year").textContent =
-  new Date().getFullYear();
-
-
-/* =========================
-   NAV SCROLL
-========================= */
-
-const nav =
-  document.getElementById("site-nav");
-
-function updateNav(){
-
-  if(window.scrollY > 40){
-    nav.classList.add("scrolled");
-  }else{
-    nav.classList.remove("scrolled");
-  }
-
-}
-
-updateNav();
-
-window.addEventListener(
-  "scroll",
-  updateNav,
-  {passive:true}
-);
-
-
-/* =========================
-   MOBILE MENU
-========================= */
-
-const mobileToggle =
-  document.getElementById("mobile-toggle");
-
-const mobileMenu =
-  document.getElementById("mobile-menu");
-
-mobileToggle.addEventListener(
-  "click",
-  function(){
-
-    const open =
-      mobileMenu.classList.toggle("open");
-
-    mobileToggle.setAttribute(
-      "aria-expanded",
-      open
-    );
-
-    mobileToggle.textContent =
-      open ? "×" : "☰";
-
-  }
-);
-
-mobileMenu
-  .querySelectorAll("a")
-  .forEach(function(link){
-
-    link.addEventListener(
-      "click",
-      function(){
-
-        mobileMenu
-          .classList
-          .remove("open");
-
-        mobileToggle
-          .setAttribute(
-            "aria-expanded",
-            "false"
-          );
-
-        mobileToggle.textContent = "☰";
-
+  </footer>
+
+
+  <script>
+    /* ======================================================
+       NAVIGATION
+    ====================================================== */
+
+    const navShell = document.getElementById("navShell");
+    const mobileToggle = document.getElementById("mobileToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    function updateNav() {
+      if (window.scrollY > 35) {
+        navShell.classList.add("scrolled");
+      } else {
+        navShell.classList.remove("scrolled");
       }
-    );
+    }
 
-  });
+    updateNav();
+
+    window.addEventListener("scroll", updateNav, {
+      passive: true
+    });
+
+    mobileToggle.addEventListener("click", function () {
+      navShell.classList.toggle("menu-open");
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navShell.classList.remove("menu-open");
+      });
+    });
 
 
-/* =========================
-   SCROLL REVEALS
-========================= */
+    /* ======================================================
+       SCROLL REVEAL
+    ====================================================== */
 
-const revealObserver =
-  new IntersectionObserver(
+    const revealElements =
+      document.querySelectorAll(".reveal");
 
-    function(entries){
-
-      entries.forEach(
-        function(entry){
-
-          if(entry.isIntersecting){
-
-            entry.target
-              .classList
-              .add("visible");
-
-            revealObserver
-              .unobserve(entry.target);
-
+    const revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
           }
-
-        }
-      );
-
-    },
-
-    {
-      threshold:.12
-    }
-
-  );
-
-function observeReveals(){
-
-  document
-    .querySelectorAll(
-      ".reveal:not(.visible)"
-    )
-    .forEach(
-      function(element){
-
-        revealObserver
-          .observe(element);
-
+        });
+      },
+      {
+        threshold: 0.12
       }
     );
 
-}
+    revealElements.forEach(function (element) {
+      revealObserver.observe(element);
+    });
 
-observeReveals();
 
+    /* ======================================================
+       SUBTLE PARALLAX
+    ====================================================== */
 
-/* =========================
-   SUBTLE HERO PARALLAX
-========================= */
+    const heroContent =
+      document.getElementById("heroContent");
 
-const heroContent =
-  document.querySelector(
-    ".hero-content"
-  );
+    const parallaxImages =
+      document.querySelectorAll(
+        ".statement-image img, .featured-project img"
+      );
 
-window.addEventListener(
-  "scroll",
-  function(){
+    let ticking = false;
 
-    if(
-      window.innerWidth > 900 &&
-      window.scrollY <
-      window.innerHeight
-    ){
+    function runParallax() {
 
-      heroContent.style.transform =
-        "translateY(" +
-        (window.scrollY * .12) +
-        "px)";
+      if (window.innerWidth > 800) {
 
+        const y = window.scrollY;
+
+        if (heroContent && y < window.innerHeight) {
+          heroContent.style.transform =
+            "translateY(" + y * 0.11 + "px)";
+        }
+
+        parallaxImages.forEach(function (image) {
+
+          const rect =
+            image.parentElement.getBoundingClientRect();
+
+          const offset =
+            (window.innerHeight / 2 -
+              (rect.top + rect.height / 2)) * 0.035;
+
+          image.style.transform =
+            "translateY(" + offset + "px)";
+        });
+      }
+
+      ticking = false;
     }
 
-  },
-  {passive:true}
-);
+    window.addEventListener(
+      "scroll",
+      function () {
 
+        if (!ticking) {
+          window.requestAnimationFrame(runParallax);
+          ticking = true;
+        }
 
-/* =========================
-   LOAD DECAP / NETLIFY
-   EDITABLE CONTENT
-========================= */
-
-fetch("content/homepage.yml")
-
-.then(function(response){
-
-  if(!response.ok){
-    throw new Error(
-      "homepage.yml not found"
+      },
+      {
+        passive: true
+      }
     );
-  }
-
-  return response.text();
-
-})
-
-.then(function(text){
-
-  const data =
-    jsyaml.load(text);
-
-  if(!data){
-    return;
-  }
 
 
-  /* BUSINESS NAME */
-
-  if(data.business_name){
-
-    const navName =
-      document.getElementById(
-        "nav-business-name"
-      );
-
-    const footerName =
-      document.getElementById(
-        "footer-business-name"
-      );
-
-    if(navName){
-      navName.textContent =
-        data.business_name;
-    }
-
-    if(footerName){
-      footerName.textContent =
-        data.business_name;
-    }
-
-  }
-
-
-  /* HEADLINE */
-
-  if(data.headline){
-
-    const headline =
-      document.getElementById(
-        "hero-headline"
-      );
-
-    if(headline){
-      headline.textContent =
-        data.headline;
-    }
-
-  }
-
-
-  /* ABOUT TEXT */
-
-  if(data.about){
-
-    const aboutText =
-      document.getElementById(
-        "about-text"
-      );
-
-    if(aboutText){
-      aboutText.textContent =
-        data.about;
-    }
-
-  }
-
-
-  /* PHONE */
-
-  if(data.phone){
-
-    const phone =
-      document.getElementById(
-        "business-phone"
-      );
-
-    const phoneLink =
-      document.getElementById(
-        "phone-link"
-      );
-
-    if(phone){
-      phone.textContent =
-        data.phone;
-    }
-
-    if(phoneLink){
-
-      phoneLink.href =
-        "tel:" +
-        String(data.phone)
-          .replace(/[^\d+]/g,"");
-
-    }
-
-  }
-
-
-  /* EMAIL */
-
-  if(data.email){
-
-    const email =
-      document.getElementById(
-        "business-email"
-      );
-
-    const emailLink =
-      document.getElementById(
-        "email-link"
-      );
-
-    if(email){
-      email.textContent =
-        data.email;
-    }
-
-    if(emailLink){
-      emailLink.href =
-        "mailto:" + data.email;
-    }
-
-  }
-
-
-  /* HERO IMAGE / VIDEO POSTER */
-
-  if(data.hero_image){
+    /* ======================================================
+       HERO VIDEO FALLBACK
+    ====================================================== */
 
     const heroVideo =
-      document.querySelector(
-        ".hero-video"
-      );
+      document.getElementById("heroVideo");
 
-    if(heroVideo){
-      heroVideo.poster =
-        data.hero_image;
+    /*
+      If assets/landscaping-hero.mp4 does not exist,
+      the poster image underneath remains visible.
+    */
+
+    if (heroVideo) {
+
+      heroVideo.addEventListener("error", function () {
+        heroVideo.style.display = "none";
+      });
+
+      const source =
+        heroVideo.querySelector("source");
+
+      if (source) {
+        source.addEventListener("error", function () {
+          heroVideo.style.display = "none";
+        });
+      }
     }
 
-  }
 
+    /* ======================================================
+       EXISTING DECAP / NETLIFY CMS YAML
+       Keeps the editable fields we already created.
+    ====================================================== */
 
-  /* ABOUT IMAGE */
+    function setText(id, value) {
 
-  if(data.about_image){
+      const element =
+        document.getElementById(id);
 
-    const aboutImage =
-      document.getElementById(
-        "about-image"
-      );
-
-    if(aboutImage){
-      aboutImage.src =
-        data.about_image;
+      if (element && value) {
+        element.textContent = value;
+      }
     }
 
-  }
 
+    function setImage(id, value) {
 
-  /* FEATURED / BOTTOM IMAGE */
+      const element =
+        document.getElementById(id);
 
-  if(data.bottom_image){
-
-    const bottomImage =
-      document.getElementById(
-        "bottom-image"
-      );
-
-    if(bottomImage){
-      bottomImage.src =
-        data.bottom_image;
+      if (element && value) {
+        element.src = value;
+      }
     }
 
-  }
+
+    function updateContact(phone, email) {
+
+      if (phone) {
+
+        setText("phone-text", phone);
+
+        const cleaned =
+          phone.replace(/[^\d+]/g, "");
+
+        const phoneLink =
+          document.getElementById("phone-link");
+
+        const footerPhone =
+          document.getElementById("footer-phone");
+
+        if (phoneLink) {
+          phoneLink.href = "tel:" + cleaned;
+        }
+
+        if (footerPhone) {
+          footerPhone.href = "tel:" + cleaned;
+        }
+      }
 
 
-  /* GALLERY */
+      if (email) {
 
-  if(
-    Array.isArray(data.gallery) &&
-    data.gallery.length
-  ){
+        setText("email-text", email);
 
-    const gallery =
-      document.getElementById(
-        "gallery"
-      );
+        const emailLink =
+          document.getElementById("email-link");
 
-    if(gallery){
+        const footerEmail =
+          document.getElementById("footer-email");
 
-      gallery.innerHTML = "";
+        if (emailLink) {
+          emailLink.href = "mailto:" + email;
+        }
 
-      data.gallery.forEach(
-        function(item,index){
+        if (footerEmail) {
+          footerEmail.href = "mailto:" + email;
+        }
+      }
+    }
 
-          const image =
-            document.createElement(
-              "img"
+
+    function loadGallery(gallery) {
+
+      if (!Array.isArray(gallery) ||
+          gallery.length === 0) {
+        return;
+      }
+
+      const grid =
+        document.getElementById("gallery-grid");
+
+      if (!grid) {
+        return;
+      }
+
+      grid.innerHTML = "";
+
+      gallery.forEach(function (item, index) {
+
+        let imageUrl = "";
+
+        if (typeof item === "string") {
+          imageUrl = item;
+        }
+
+        if (
+          typeof item === "object" &&
+          item !== null
+        ) {
+          imageUrl =
+            item.image ||
+            item.src ||
+            item.url ||
+            "";
+        }
+
+        if (!imageUrl) {
+          return;
+        }
+
+        const wrapper =
+          document.createElement("div");
+
+        wrapper.className =
+          "gallery-item reveal visible";
+
+        const image =
+          document.createElement("img");
+
+        image.src = imageUrl;
+        image.alt =
+          "Evergreen Outdoor project " +
+          (index + 1);
+
+        image.loading = "lazy";
+
+        wrapper.appendChild(image);
+        grid.appendChild(wrapper);
+      });
+    }
+
+
+    fetch("content/homepage.yml?cache=" + Date.now())
+
+      .then(function (response) {
+
+        if (!response.ok) {
+          throw new Error(
+            "Homepage YAML not found"
+          );
+        }
+
+        return response.text();
+      })
+
+      .then(function (yamlText) {
+
+        const data =
+          jsyaml.load(yamlText) || {};
+
+
+        /* Business name */
+
+        if (data.business_name) {
+
+          setText(
+            "nav-business-name",
+            data.business_name
+          );
+
+          setText(
+            "footer-business-name",
+            data.business_name
+          );
+
+          setText(
+            "copyright-business-name",
+            data.business_name
+          );
+        }
+
+
+        /* Main headline */
+
+        if (data.headline) {
+
+          const headline =
+            document.getElementById(
+              "hero-headline"
             );
 
-          /*
-            Supports either:
-            gallery:
-              - /image.jpg
+          if (headline) {
+            headline.textContent =
+              data.headline;
+          }
+        }
 
-            OR:
-            gallery:
-              - image: /image.jpg
-          */
 
-          image.src =
-            typeof item === "string"
-              ? item
-              : item.image;
+        /* About copy */
 
-          image.alt =
-            "Recent landscaping project";
-
-          image.className =
-            "reveal";
-
-          image.style.transitionDelay =
-            (index * 100) + "ms";
-
-          gallery.appendChild(
-            image
+        if (data.about) {
+          setText(
+            "about-text",
+            data.about
           );
+        }
 
-          revealObserver.observe(
-            image
+
+        /* Contact */
+
+        updateContact(
+          data.phone,
+          data.email
+        );
+
+
+        /* Hero image fallback */
+
+        if (data.hero_image) {
+
+          const heroPoster =
+            document.getElementById(
+              "heroPoster"
+            );
+
+          if (heroPoster) {
+            heroPoster.style.backgroundImage =
+              'url("' +
+              data.hero_image +
+              '")';
+          }
+
+          if (heroVideo) {
+            heroVideo.poster =
+              data.hero_image;
+          }
+        }
+
+
+        /* About image */
+
+        if (data.about_image) {
+          setImage(
+            "about-image",
+            data.about_image
           );
+        }
 
+
+        /* Featured project image */
+
+        if (data.bottom_image) {
+          setImage(
+            "bottom-image",
+            data.bottom_image
+          );
+        }
+
+
+        /* Editable gallery */
+
+        if (data.gallery) {
+          loadGallery(
+            data.gallery
+          );
+        }
+
+      })
+
+      .catch(function (error) {
+
+        /*
+          The site still works with its built-in
+          demo content if homepage.yml cannot load.
+        */
+
+        console.log(
+          "Using built-in demo content:",
+          error.message
+        );
+      });
+
+
+    /* ======================================================
+       YEAR
+    ====================================================== */
+
+    document.getElementById(
+      "current-year"
+    ).textContent =
+      new Date().getFullYear();
+
+
+    /* ======================================================
+       NETLIFY IDENTITY
+    ====================================================== */
+
+    if (window.netlifyIdentity) {
+
+      window.netlifyIdentity.on(
+        "init",
+        function (user) {
+
+          if (!user) {
+
+            window.netlifyIdentity.on(
+              "login",
+              function () {
+
+                document.location.href =
+                  "/admin/";
+              }
+            );
+          }
         }
       );
-
     }
-
-  }
-
-})
-
-.catch(function(error){
-
-  /*
-    The site still works with its fallback
-    content if homepage.yml is unavailable.
-  */
-
-  console.log(
-    "Using fallback page content:",
-    error.message
-  );
-
-});
-
-</script>
+  </script>
 
 </body>
 </html>
