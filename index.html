@@ -3,55 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Evergreen Outdoor Co. | Landscaping</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#f6f4ed;
   color:#173024;
+  background:#f7f5ef;
   line-height:1.6;
+  overflow-x:hidden;
 }
-
-img{
-  display:block;
-}
-
-/* NAV */
 
 nav{
-  position:absolute;
+  position:sticky;
   top:0;
-  left:0;
-  width:100%;
   z-index:20;
+  background:#123024;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:24px 7%;
+  padding:17px 7%;
   color:white;
+  transition:background .35s ease,box-shadow .35s ease,padding .35s ease;
+}
+
+nav.scrolled{
+  background:rgba(18,48,36,.97);
+  box-shadow:0 8px 30px rgba(0,0,0,.16);
+  padding-top:13px;
+  padding-bottom:13px;
 }
 
 .logo{
-  font-size:22px;
-  font-weight:900;
-  letter-spacing:.6px;
+  font-size:21px;
+  font-weight:800;
+  letter-spacing:.4px;
 }
+
+.logo span{color:#b9d77a}
 
 nav ul{
   display:flex;
-  gap:30px;
+  gap:28px;
   list-style:none;
 }
 
@@ -59,551 +55,372 @@ nav a{
   color:white;
   text-decoration:none;
   font-weight:700;
+  position:relative;
 }
 
-/* HERO */
+nav a:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:#b9d77a;
+  transition:width .25s ease;
+}
+
+nav a:hover:after{width:100%}
 
 .hero{
-  min-height:92vh;
+  min-height:78vh;
   display:flex;
   align-items:center;
-  position:relative;
+  padding:80px 7%;
   color:white;
-  padding:130px 7% 110px;
   background:
-    linear-gradient(
-      90deg,
-      rgba(8,31,22,.92) 0%,
-      rgba(8,31,22,.68) 48%,
-      rgba(8,31,22,.18) 100%
-    ),
+    linear-gradient(90deg,rgba(7,31,22,.94),rgba(7,31,22,.68),rgba(7,31,22,.25)),
     url('https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1800&q=85')
     center/cover;
+  background-attachment:fixed;
 }
 
 .hero-inner{
-  max-width:760px;
+  max-width:720px;
+  animation:heroIn .9s ease both;
+}
+
+@keyframes heroIn{
+  from{opacity:0;transform:translateY(28px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 .eyebrow{
   text-transform:uppercase;
-  font-size:13px;
-  letter-spacing:2.5px;
-  font-weight:900;
-  color:#bfdc83;
-  margin-bottom:16px;
+  letter-spacing:2px;
+  color:#cce598;
+  font-weight:800;
+  font-size:14px;
+  margin-bottom:13px;
 }
 
-.hero h1{
-  font-size:clamp(54px,8vw,96px);
-  line-height:.95;
-  letter-spacing:-3px;
-  margin-bottom:26px;
+h1{
+  font-size:clamp(48px,7vw,82px);
+  line-height:1;
+  margin-bottom:22px;
 }
 
 .hero p{
-  font-size:20px;
-  max-width:600px;
-  color:#edf4ef;
-  margin-bottom:34px;
+  font-size:19px;
+  max-width:590px;
+  margin-bottom:30px;
+  color:#edf5ef;
 }
 
 .btn{
   display:inline-block;
-  padding:15px 24px;
-  border-radius:6px;
+  padding:14px 22px;
+  border-radius:7px;
   text-decoration:none;
-  font-weight:900;
-  background:#bad67d;
-  color:#173024;
+  font-weight:800;
   margin-right:10px;
+  background:#b9d77a;
+  color:#173024;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
 }
 
 .btn.alt{
-  color:white;
   background:transparent;
-  border:2px solid rgba(255,255,255,.8);
+  border:2px solid white;
+  color:white;
 }
 
-/* FLOATING SERVICE BAR */
+section{padding:80px 7%}
 
-.service-wrap{
-  position:relative;
-  z-index:10;
-  margin-top:-65px;
-  padding:0 7%;
+.section-title{
+  font-size:42px;
+  line-height:1.1;
+  margin-bottom:32px;
 }
 
 .services{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  background:white;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 20px 60px rgba(17,48,35,.15);
+  gap:24px;
 }
 
 .service-card{
-  min-height:270px;
-  padding:38px 34px;
-  position:relative;
-  border-right:1px solid #e8ece6;
+  background:white;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(24,49,38,.09);
+  transition:transform .35s ease,box-shadow .35s ease;
 }
 
-.service-card:last-child{
-  border-right:none;
+.service-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 18px 40px rgba(24,49,38,.15);
 }
 
-.service-number{
-  font-size:14px;
-  font-weight:900;
-  color:#7d8c83;
-  margin-bottom:55px;
+.service-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  display:block;
+  transition:transform .55s ease;
 }
 
-.service-card h3{
-  font-size:28px;
-  line-height:1.1;
-  margin-bottom:12px;
+.service-card:hover img{transform:scale(1.06)}
+
+.service-content{padding:24px}
+
+.service-content h3{
+  font-size:23px;
+  margin-bottom:8px;
 }
 
-.service-card p{
-  color:#617067;
-  max-width:320px;
-}
-
-.service-link{
-  display:inline-block;
-  margin-top:22px;
-  font-weight:900;
-  color:#28523c;
-  text-decoration:none;
-}
-
-/* INTRO */
-
-.intro{
-  padding:135px 7% 95px;
-  display:grid;
-  grid-template-columns:.75fr 1.25fr;
-  gap:80px;
-  align-items:start;
-}
-
-.intro-label{
-  font-size:14px;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-weight:900;
-  color:#4a7559;
-}
-
-.intro h2{
-  font-size:clamp(42px,5.5vw,72px);
-  line-height:1.02;
-  letter-spacing:-2px;
-  max-width:850px;
-}
-
-.intro p{
-  margin-top:26px;
-  max-width:700px;
-  font-size:18px;
-  color:#59675f;
-}
-
-/* ABOUT SPLIT */
+.service-content p{color:#526158}
 
 .about{
+  background:#e8eddc;
   display:grid;
-  grid-template-columns:1.15fr .85fr;
-  min-height:650px;
-  background:#173c2c;
-  color:white;
-}
-
-.about-image-wrap{
-  overflow:hidden;
-}
-
-.about img{
-  width:100%;
-  height:100%;
-  min-height:650px;
-  object-fit:cover;
-}
-
-.about-content{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:80px 11%;
-}
-
-.about-content h2{
-  font-size:clamp(42px,5vw,66px);
-  line-height:1;
-  letter-spacing:-2px;
-  margin-bottom:26px;
-}
-
-.about-content p{
-  font-size:18px;
-  color:#d9e4dc;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-top:45px;
-}
-
-.stat{
-  border-top:1px solid rgba(255,255,255,.22);
-  padding-top:18px;
-}
-
-.stat strong{
-  display:block;
-  font-size:31px;
-  color:#c5df8c;
-  margin-bottom:2px;
-}
-
-.stat span{
-  color:#dbe5de;
-  font-size:13px;
-}
-
-/* PROJECTS */
-
-.projects{
-  padding:120px 7%;
-}
-
-.project-head{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-  align-items:end;
-  margin-bottom:48px;
-}
-
-.project-head h2{
-  font-size:clamp(48px,6vw,76px);
-  line-height:.98;
-  letter-spacing:-2px;
-}
-
-.project-head p{
-  color:#68736c;
-  font-size:18px;
-  max-width:500px;
-  justify-self:end;
-}
-
-.project-layout{
-  display:grid;
-  grid-template-columns:1.4fr 1fr;
-  gap:20px;
-  min-height:640px;
-}
-
-.featured-project{
-  overflow:hidden;
-  border-radius:16px;
-  min-height:640px;
-}
-
-#bottom-image{
-  width:100%;
-  height:100%;
-  min-height:640px;
-  object-fit:cover;
-  display:none;
-}
-
-#gallery{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  grid-template-rows:1fr 1fr;
-  gap:20px;
-}
-
-#gallery img{
-  width:100% !important;
-  height:100%;
-  min-height:300px;
-  object-fit:cover;
-  border-radius:14px;
-  margin:0 !important;
-}
-
-#gallery img:first-child{
-  grid-column:1 / 3;
-}
-
-/* PROCESS */
-
-.process{
-  background:#e6ebdd;
-  padding:105px 7%;
-}
-
-.process-head{
-  max-width:750px;
-  margin-bottom:55px;
-}
-
-.process-head h2{
-  font-size:clamp(44px,5vw,66px);
-  line-height:1;
-  letter-spacing:-2px;
-}
-
-.steps{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:40px;
-}
-
-.step{
-  padding-top:22px;
-  border-top:2px solid #b9c7b6;
-}
-
-.step span{
-  font-size:13px;
-  font-weight:900;
-  color:#6b7d70;
-}
-
-.step h3{
-  margin-top:28px;
-  font-size:27px;
-  margin-bottom:10px;
-}
-
-.step p{
-  color:#5d6b62;
-}
-
-/* CTA */
-
-.cta{
-  padding:105px 7%;
-  background:#10291f;
-  color:white;
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
+  grid-template-columns:1.15fr 1fr;
   gap:60px;
   align-items:center;
 }
 
-.cta h2{
-  font-size:clamp(45px,6vw,76px);
-  line-height:1;
-  letter-spacing:-2px;
+.about img{
+  width:100%;
+  height:470px;
+  object-fit:cover;
+  border-radius:16px;
+  transition:transform .5s ease,box-shadow .5s ease;
 }
 
-.cta-right{
-  justify-self:end;
-  max-width:430px;
+.about img:hover{
+  transform:scale(1.02);
+  box-shadow:0 18px 40px rgba(24,49,38,.16);
+}
+
+.about h2{
+  font-size:46px;
+  line-height:1.08;
+  margin-bottom:18px;
+}
+
+.about p{
+  font-size:17px;
+  color:#405148;
+}
+
+.stats{
+  display:flex;
+  gap:35px;
+  margin-top:28px;
+}
+
+.stat strong{
+  display:block;
+  font-size:30px;
+  color:#28523c;
+}
+
+#photo-section{
+  padding:85px 7%;
+  background:#f7f5ef;
+}
+
+.project-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:25px;
+  margin-bottom:32px;
+}
+
+.project-heading h2{
+  font-size:44px;
+  line-height:1.1;
+}
+
+.project-heading p{
+  max-width:470px;
+  color:#647068;
+}
+
+#bottom-image{
+  width:100%;
+  height:430px;
+  object-fit:cover;
+  border-radius:16px;
+  margin-bottom:22px;
+  transition:transform .45s ease;
+}
+
+#bottom-image:hover{transform:scale(1.01)}
+
+#gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+#gallery img{
+  width:100%!important;
+  max-width:none!important;
+  height:260px;
+  object-fit:cover;
+  border-radius:14px;
+  margin:0!important;
+  transition:transform .4s ease,box-shadow .4s ease;
+}
+
+#gallery img:hover{
+  transform:translateY(-6px) scale(1.02);
+  box-shadow:0 14px 30px rgba(24,49,38,.16);
+}
+
+.cta{
+  background:#173c2c;
+  color:white;
+  text-align:center;
+}
+
+.cta h2{
+  font-size:44px;
+  margin-bottom:12px;
 }
 
 .cta p{
-  color:#d5e0d8;
-  font-size:18px;
-  margin-bottom:25px;
+  max-width:650px;
+  margin:0 auto 28px;
+  color:#dce8df;
 }
 
-/* CONTACT */
-
 .contact{
-  padding:110px 7%;
   display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:90px;
+  grid-template-columns:.9fr 1.1fr;
+  gap:60px;
   background:white;
 }
 
 .contact h2{
-  font-size:clamp(42px,5vw,66px);
-  line-height:1;
-  letter-spacing:-2px;
-  margin-bottom:20px;
-}
-
-.contact-info p{
-  color:#637067;
+  font-size:42px;
+  margin-bottom:12px;
 }
 
 .contact-details{
-  margin-top:30px;
-  line-height:2;
-  font-weight:800;
-  color:#173024 !important;
+  margin-top:24px;
+  font-weight:700;
 }
 
 form{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
+  gap:13px;
 }
 
-input,
-textarea{
+input,textarea{
   width:100%;
-  border:1px solid #d5dbd3;
-  background:#fafaf8;
-  padding:16px;
-  border-radius:6px;
+  padding:15px;
+  border:1px solid #cad2c8;
+  border-radius:7px;
   font:inherit;
+  transition:border-color .2s ease,box-shadow .2s ease;
 }
 
-textarea{
-  grid-column:1 / 3;
-  min-height:150px;
+input:focus,textarea:focus{
+  outline:none;
+  border-color:#477455;
+  box-shadow:0 0 0 3px rgba(71,116,85,.12);
 }
+
+textarea{min-height:130px}
 
 .submit{
-  grid-column:1 / 3;
   border:0;
-  padding:17px;
-  border-radius:6px;
   background:#28523c;
   color:white;
-  font-weight:900;
+  padding:15px;
+  border-radius:7px;
+  font-weight:800;
   cursor:pointer;
+  transition:transform .25s ease,background .25s ease;
+}
+
+.submit:hover{
+  transform:translateY(-2px);
+  background:#1f4633;
 }
 
 .note{
-  font-size:12px;
-  color:#899289 !important;
-  margin-top:25px;
+  font-size:13px;
+  color:#6a756d;
+  margin-top:10px;
 }
 
-/* FOOTER */
-
 footer{
-  padding:32px 7%;
-  background:#0c2118;
-  color:#d9e5dd;
+  background:#10291f;
+  color:#dbe6df;
+  padding:28px 7%;
   display:flex;
   justify-content:space-between;
   gap:20px;
 }
 
-/* MOBILE */
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:opacity .75s ease,transform .75s ease;
+}
 
-@media(max-width:900px){
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
 
-  nav ul{
-    display:none;
-  }
+.service-card.reveal:nth-child(2){transition-delay:.12s}
+.service-card.reveal:nth-child(3){transition-delay:.24s}
 
-  .hero{
-    min-height:80vh;
-    padding-top:120px;
-  }
-
-  .hero h1{
-    letter-spacing:-2px;
-  }
-
-  .service-wrap{
-    margin-top:-35px;
-  }
+@media(max-width:800px){
+  nav ul{display:none}
 
   .services,
-  .intro,
   .about,
-  .project-head,
-  .project-layout,
-  .steps,
-  .cta,
   .contact{
     grid-template-columns:1fr;
   }
 
-  .services{
-    border-radius:14px;
+  .hero{
+    min-height:70vh;
+    background-attachment:scroll;
   }
 
-  .service-card{
-    border-right:0;
-    border-bottom:1px solid #e8ece6;
-    min-height:auto;
-  }
+  .about img{height:320px}
 
-  .service-number{
-    margin-bottom:25px;
-  }
+  #gallery{grid-template-columns:1fr}
 
-  .intro{
-    gap:30px;
-    padding-top:100px;
-  }
+  #gallery img{height:260px}
 
-  .about img{
-    min-height:400px;
-    height:400px;
-  }
+  #bottom-image{height:300px}
 
-  .about-content{
-    padding:70px 7%;
-  }
+  .project-heading{display:block}
 
-  .project-head{
-    gap:20px;
-  }
+  .project-heading p{margin-top:12px}
 
-  .project-head p{
-    justify-self:start;
-  }
+  .stats{flex-wrap:wrap}
 
-  .project-layout{
-    min-height:auto;
-  }
+  footer{flex-direction:column}
+}
 
-  .featured-project{
-    min-height:420px;
-  }
-
-  #bottom-image{
-    min-height:420px;
-  }
-
-  #gallery{
-    grid-template-columns:1fr;
-    grid-template-rows:auto;
-  }
-
-  #gallery img:first-child{
-    grid-column:auto;
-  }
-
-  #gallery img{
-    min-height:280px;
-    height:280px;
-  }
-
-  .cta-right{
-    justify-self:start;
-  }
-
-  form{
-    grid-template-columns:1fr;
-  }
-
-  textarea,
-  .submit{
-    grid-column:auto;
-  }
-
-  footer{
-    flex-direction:column;
+@media(prefers-reduced-motion:reduce){
+  *{
+    scroll-behavior:auto!important;
+    animation:none!important;
+    transition:none!important;
   }
 }
 </style>
@@ -614,8 +431,7 @@ footer{
 <body>
 
 <nav>
-  <div class="logo">EVERGREEN OUTDOOR CO.</div>
-
+  <div class="logo">EVERGREEN <span>OUTDOOR CO.</span></div>
   <ul>
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
@@ -626,123 +442,91 @@ footer{
 
 <header class="hero">
   <div class="hero-inner">
-
-    <div class="eyebrow">
-      Landscape • Build • Maintain
-    </div>
-
-    <h1>
-      Outdoor spaces built differently.
-    </h1>
-
+    <div class="eyebrow">Professional Landscaping Services</div>
+    <h1>Beautiful yards.<br>Happier homes.</h1>
     <p>
-      Thoughtful landscaping, dependable property care,
-      and outdoor spaces designed to make your home stand out.
+      Landscaping, hardscaping, and lawn care designed to make your
+      property look its best.
     </p>
-
-    <a class="btn" href="#contact">
-      Request an Estimate
-    </a>
-
-    <a class="btn alt" href="#projects">
-      View Projects
-    </a>
-
+    <a class="btn" href="#contact">Get a Free Estimate</a>
+    <a class="btn alt" href="#projects">View Our Work</a>
   </div>
 </header>
 
-<div class="service-wrap" id="services">
+<section id="services">
+  <div class="eyebrow reveal" style="color:#477455">What We Do</div>
+
+  <h2 class="section-title reveal">
+    Outdoor services built around your property.
+  </h2>
 
   <div class="services">
 
-    <div class="service-card">
-      <div class="service-number">01</div>
-      <h3>Landscape Design</h3>
-      <p>
-        Planting, garden beds, mulch, edging,
-        and complete property transformations.
-      </p>
-      <a class="service-link" href="#contact">
-        Start a project →
-      </a>
+    <div class="service-card reveal">
+      <img
+        src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=900&q=85"
+        alt="Landscape design">
+      <div class="service-content">
+        <h3>Landscape Design</h3>
+        <p>
+          Planting plans, garden beds, edging, mulch,
+          and complete yard transformations.
+        </p>
+      </div>
     </div>
 
-    <div class="service-card">
-      <div class="service-number">02</div>
-      <h3>Hardscaping</h3>
-      <p>
-        Patios, walkways, retaining walls,
-        fire pits, and outdoor living spaces.
-      </p>
-      <a class="service-link" href="#contact">
-        Start a project →
-      </a>
+    <div class="service-card reveal">
+      <img
+        src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=900&q=85"
+        alt="Hardscaping">
+      <div class="service-content">
+        <h3>Hardscaping</h3>
+        <p>
+          Patios, walkways, retaining walls,
+          fire-pit areas, and outdoor living spaces.
+        </p>
+      </div>
     </div>
 
-    <div class="service-card">
-      <div class="service-number">03</div>
-      <h3>Property Care</h3>
-      <p>
-        Lawn maintenance, trimming,
-        seasonal cleanups, and dependable upkeep.
-      </p>
-      <a class="service-link" href="#contact">
-        Start a project →
-      </a>
+    <div class="service-card reveal">
+      <img
+        src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=900&q=85"
+        alt="Lawn care">
+      <div class="service-content">
+        <h3>Lawn Care</h3>
+        <p>
+          Mowing, seasonal cleanups, trimming,
+          and dependable property maintenance.
+        </p>
+      </div>
     </div>
 
   </div>
-</div>
-
-<section class="intro">
-
-  <div class="intro-label">
-    Built for better outdoor living
-  </div>
-
-  <div>
-    <h2>
-      Your property should look as good outside as it does inside.
-    </h2>
-
-    <p>
-      From simple property improvements to complete outdoor
-      transformations, we focus on clean work, strong details,
-      and spaces made to last.
-    </p>
-  </div>
-
 </section>
 
 <section class="about" id="about">
 
-  <div class="about-image-wrap">
-    <img
-      id="about-image"
-      src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1400&q=85"
-      alt="Outdoor project">
-  </div>
+  <img
+    id="about-image"
+    class="reveal"
+    src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1200&q=85"
+    alt="Landscaped outdoor space">
 
-  <div class="about-content">
+  <div class="reveal">
+    <div class="eyebrow" style="color:#477455">About Evergreen</div>
 
-    <div class="eyebrow">
-      About Evergreen
-    </div>
-
-    <h2>
-      Quality work starts with the details.
-    </h2>
+    <h2>More than landscaping.</h2>
 
     <p>
-      Evergreen Outdoor Co. creates and maintains outdoor spaces
-      built around each property and the people who use it.
+      Evergreen Outdoor Co. creates and maintains beautiful outdoor
+      spaces designed around the way homeowners actually use their
+      properties.
     </p>
 
     <div class="stats">
-
       <div class="stat">
         <strong>100%</strong>
-        <span>Quality focused</span>
+        <span>Focused on quality</span>
       </div>
 
       <div class="stat">
@@ -752,146 +536,66 @@ footer{
 
       <div class="stat">
         <strong>1</strong>
-        <span>Reliable team</span>
+        <span>Trusted team</span>
       </div>
-
     </div>
-
   </div>
 
 </section>
 
-<section class="projects" id="projects">
+<section id="photo-section">
 
-  <div class="project-head">
-
+  <div id="projects" class="project-heading reveal">
     <div>
-      <div class="eyebrow" style="color:#477455">
-        Selected Work
-      </div>
-
-      <h2>
-        Recent projects.
-      </h2>
+      <div class="eyebrow" style="color:#477455">Our Work</div>
+      <h2>Recent Projects</h2>
     </div>
 
     <p>
-      A look at recent landscaping,
-      hardscaping, and outdoor transformation projects.
+      A look at some of our landscaping, hardscaping,
+      and property transformation projects.
     </p>
-
   </div>
 
-  <div class="project-layout">
+  <img
+    id="bottom-image"
+    class="reveal"
+    alt="Featured project"
+    style="display:none;">
 
-    <div class="featured-project">
-      <img
-        id="bottom-image"
-        alt="Featured outdoor project">
-    </div>
-
-    <div id="gallery"></div>
-
-  </div>
-
-</section>
-
-<section class="process">
-
-  <div class="process-head">
-
-    <div class="eyebrow" style="color:#477455">
-      How It Works
-    </div>
-
-    <h2>
-      Simple from the first call to the final walkthrough.
-    </h2>
-
-  </div>
-
-  <div class="steps">
-
-    <div class="step">
-      <span>STEP 01</span>
-      <h3>Tell us your idea.</h3>
-      <p>
-        Reach out and tell us what you want
-        to improve around your property.
-      </p>
-    </div>
-
-    <div class="step">
-      <span>STEP 02</span>
-      <h3>Build the plan.</h3>
-      <p>
-        We review the project, discuss the details,
-        and create a clear plan for the work.
-      </p>
-    </div>
-
-    <div class="step">
-      <span>STEP 03</span>
-      <h3>Bring it to life.</h3>
-      <p>
-        The project gets completed with
-        clean craftsmanship and attention to detail.
-      </p>
-    </div>
-
-  </div>
+  <div id="gallery"></div>
 
 </section>
 
 <section class="cta">
-
-  <div>
-    <div class="eyebrow">
-      Start Your Project
-    </div>
-
-    <h2>
-      Ready for a better outdoor space?
-    </h2>
-  </div>
-
-  <div class="cta-right">
+  <div class="reveal">
+    <h2>Ready to upgrade your outdoors?</h2>
 
     <p>
-      Tell us what you have in mind
-      and we'll help you take the next step.
+      Tell us what you have in mind and we'll help turn your property
+      into an outdoor space you'll enjoy.
     </p>
 
-    <a class="btn" href="#contact">
-      Get a Free Estimate
-    </a>
-
+    <a class="btn" href="#contact">Get an Estimate</a>
   </div>
-
 </section>
 
 <section class="contact" id="contact">
 
-  <div class="contact-info">
+  <div class="reveal">
+    <div class="eyebrow" style="color:#477455">Get In Touch</div>
 
-    <div class="eyebrow" style="color:#477455">
-      Contact
-    </div>
-
-    <h2>
-      Let's talk about your property.
-    </h2>
+    <h2>Tell us about your project.</h2>
 
     <p>
-      Have a project in mind?
-      Send us a message and tell us what you're looking for.
+      Have a landscaping project in mind?
+      Reach out and tell us what you're looking for.
     </p>
 
     <p class="contact-details">
       Phone:
       <span id="business-phone"></span>
       <br>
-
       Email:
       <span id="business-email"></span>
     </p>
@@ -899,33 +603,24 @@ footer{
     <p class="note">
       Evergreen Outdoor Co. is a fictional demonstration business.
     </p>
-
   </div>
 
   <form
+    class="reveal"
     onsubmit="event.preventDefault(); alert('Demo only — this form is not connected yet.');">
 
-    <input
-      placeholder="Your name"
-      required>
+    <input placeholder="Your name" required>
 
     <input
       type="email"
       placeholder="Email address"
       required>
 
-    <input
-      placeholder="Phone number">
+    <input placeholder="Phone number">
 
-    <input
-      placeholder="Project type">
+    <textarea placeholder="Tell us about your project"></textarea>
 
-    <textarea
-      placeholder="Tell us about your project"></textarea>
-
-    <button
-      class="submit"
-      type="submit">
+    <button class="submit" type="submit">
       Request Estimate
     </button>
 
@@ -934,135 +629,97 @@ footer{
 </section>
 
 <footer>
-
-  <strong>
-    Evergreen Outdoor Co.
-  </strong>
-
-  <span>
-    Landscaping • Hardscaping • Property Care
-  </span>
-
+  <strong>Evergreen Outdoor Co.</strong>
+  <span>Landscaping • Hardscaping • Lawn Care</span>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
 
 <script>
-
 fetch('content/homepage.yml')
-
 .then(response => response.text())
-
 .then(text => {
 
   const data = jsyaml.load(text);
 
-  const logo =
-    document.querySelector('.logo');
+  const logo = document.querySelector('.logo');
 
   if (logo && data.business_name) {
     logo.textContent = data.business_name;
   }
 
-
-  const headline =
-    document.querySelector('.hero h1');
+  const headline = document.querySelector('.hero h1');
 
   if (headline && data.headline) {
     headline.textContent = data.headline;
   }
 
-
-  const about =
-    document.querySelector('.about-content p');
+  const about = document.querySelector('.about p');
 
   if (about && data.about) {
     about.textContent = data.about;
   }
 
-
-  const phone =
-    document.querySelector('#business-phone');
+  const phone = document.querySelector('#business-phone');
 
   if (phone && data.phone) {
     phone.textContent = data.phone;
   }
 
-
-  const email =
-    document.querySelector('#business-email');
+  const email = document.querySelector('#business-email');
 
   if (email && data.email) {
     email.textContent = data.email;
   }
 
-
-  const hero =
-    document.querySelector('.hero');
+  const hero = document.querySelector('.hero');
 
   if (hero && data.hero_image) {
-
     hero.style.backgroundImage =
     `linear-gradient(
       90deg,
-      rgba(8,31,22,.92) 0%,
-      rgba(8,31,22,.68) 48%,
-      rgba(8,31,22,.18) 100%
+      rgba(7,31,22,.94),
+      rgba(7,31,22,.68),
+      rgba(7,31,22,.25)
     ),
     url('${data.hero_image}')`;
-
   }
 
-
-  const aboutImage =
-    document.querySelector('#about-image');
+  const aboutImage = document.querySelector('#about-image');
 
   if (aboutImage && data.about_image) {
     aboutImage.src = data.about_image;
   }
 
-
-  const bottomImage =
-    document.querySelector('#bottom-image');
+  const bottomImage = document.querySelector('#bottom-image');
 
   if (bottomImage && data.bottom_image) {
-
-    bottomImage.src =
-      data.bottom_image;
-
-    bottomImage.style.display =
-      'block';
-
+    bottomImage.src = data.bottom_image;
+    bottomImage.style.display = 'block';
   }
 
-
-  const gallery =
-    document.querySelector('#gallery');
+  const gallery = document.querySelector('#gallery');
 
   if (gallery && data.gallery) {
 
     gallery.innerHTML = '';
 
-    data.gallery
-      .slice(0,3)
-      .forEach(item => {
+    data.gallery.forEach((item,index) => {
 
-        const img =
-          document.createElement('img');
+      const img = document.createElement('img');
 
-        img.src = item;
+      img.src = item;
+      img.alt = 'Recent landscaping project';
+      img.classList.add('reveal');
+      img.style.transitionDelay = `${index * 100}ms`;
 
-        img.alt =
-          'Recent landscaping project';
+      gallery.appendChild(img);
 
-        gallery.appendChild(img);
-
-      });
-
+      revealObserver.observe(img);
+    });
   }
 
 })
-
 .catch(error =>
   console.error(
     'Could not load website content:',
@@ -1070,6 +727,34 @@ fetch('content/homepage.yml')
   )
 );
 
+const nav = document.querySelector('nav');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 40) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+const revealObserver = new IntersectionObserver(entries => {
+
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+
+  });
+
+},{
+  threshold:.12
+});
+
+document.querySelectorAll('.reveal').forEach(element => {
+  revealObserver.observe(element);
+});
 </script>
 
 </body>
