@@ -1,96 +1,215 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
   <title>Website Editor</title>
-</head>
-<body>
-  <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.17.0-beta.0/dist/decap-cms.js"></script>
-<script>
-(function () {
-  const SEARCH_ID = "cms-text-search";
-  const STYLE_ID = "cms-text-search-style";
 
-  function setupSearch() {
-    const editor = document.querySelector(
-      '[class*="EditorControlPane"], [class*="EditorControl"]'
-    );
-
-    if (!editor) return;
-
-    if (document.getElementById(SEARCH_ID)) return;
-
-    const search = document.createElement("input");
-    search.id = SEARCH_ID;
-    search.type = "search";
-    search.placeholder = "Search website text...";
-    search.setAttribute("aria-label", "Search editable text");
-
-    search.style.cssText = `
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 16px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
+  <style>
+    #cms-search-panel {
+      position: fixed;
+      top: 75px;
+      right: 20px;
+      width: 320px;
+      max-width: calc(100vw - 40px);
+      padding: 15px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+      z-index: 99999;
+      font-family: Arial, sans-serif;
       box-sizing: border-box;
-    `;
-
-    const message = document.createElement("div");
-    message.id = "cms-search-message";
-    message.style.cssText =
-      "margin-bottom:12px;font-size:13px;color:#666;";
-
-    editor.prepend(message);
-    editor.prepend(search);
-
-    function filterFields() {
-      const query = search.value.trim().toLowerCase();
-
-      const fields = editor.querySelectorAll(
-        '[class*="ControlContainer"]'
-      );
-
-      let matches = 0;
-
-      fields.forEach(function (field) {
-        const label = field.querySelector("label");
-        const input = field.querySelector(
-          "input, textarea"
-        );
-
-        const text = (
-          (label ? label.textContent : "") +
-          " " +
-          (input ? input.value : "")
-        ).toLowerCase();
-
-        const visible = !query || text.includes(query);
-
-        field.style.display = visible ? "" : "none";
-
-        if (visible) matches++;
-      });
-
-      message.textContent = query
-        ? matches + " matching fields"
-        : "";
     }
 
-    search.addEventListener("input", filterFields);
-  }
+    #cms-search-input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
 
-  const observer = new MutationObserver(setupSearch);
+    #cms-search-results {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-top: 8px;
+    }
 
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
+    .cms-search-result {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+      background: #f2f4f6;
+      text-align: left;
+      cursor: pointer;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
 
-  setupSearch();
-})();
-</script>
+    .cms-search-result:hover {
+      background: #dcefe3;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script src="https://unpkg.com/decap-cms@3.17.0/dist/decap-cms.js"></script>
+
+  <script>
+    (function () {
+      let searchInput = null;
+      let resultsBox = null;
+
+      function getFields() {
+        return Array.from(
+          document.querySelectorAll(
+            'textarea, input[type="text"], input:not([type])'
+          )
+        ).filter(function (field) {
+          return (
+            field.id !== "cms-search-input" &&
+            field.offsetParent !== null
+          );
+        });
+      }
+
+      function getFieldLabel(field) {
+        if (field.id) {
+          const label = Array.from(
+            document.querySelectorAll("label")
+          ).find(function (item) {
+            return item.htmlFor === field.id;
+          });
+
+          if (label) {
+            return label.textContent.trim();
+          }
+        }
+
+        let parent = field.parentElement;
+
+        for (let i = 0; i < 4 && parent; i++) {
+          const label = parent.querySelector("label");
+
+          if (label) {
+            return label.textContent.trim();
+          }
+
+          parent = parent.parentElement;
+        }
+
+        return field.placeholder || "Editable text";
+      }
+
+      function updateResults() {
+        if (!searchInput || !resultsBox) return;
+
+        const query = searchInput.value.trim().toLowerCase();
+
+        resultsBox.replaceChildren();
+
+        if (!query) return;
+
+        const matches = getFields().filter(function (field) {
+          const label = getFieldLabel(field).toLowerCase();
+          const value = (field.value || "").toLowerCase();
+
+          return (
+            label.includes(query) ||
+            value.includes(query)
+          );
+        });
+
+        if (matches.length === 0) {
+          resultsBox.textContent = "No matching text found.";
+          return;
+        }
+
+        matches.forEach(function (field) {
+          const button = document.createElement("button");
+
+          button.type = "button";
+          button.className = "cms-search-result";
+
+          const label = getFieldLabel(field);
+          const value = field.value || "";
+
+          button.textContent =
+            label + " — " + value.substring(0, 100);
+
+          button.addEventListener("click", function () {
+            field.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+
+            setTimeout(function () {
+              field.focus({ preventScroll: true });
+            }, 350);
+          });
+
+          resultsBox.appendChild(button);
+        });
+      }
+
+      function setupSearch() {
+        const fields = getFields();
+
+        if (fields.length < 3) {
+          const existing = document.getElementById(
+            "cms-search-panel"
+          );
+
+          if (existing) {
+            existing.remove();
+            searchInput = null;
+            resultsBox = null;
+          }
+
+          return;
+        }
+
+        if (document.getElementById("cms-search-panel")) {
+          return;
+        }
+
+        const panel = document.createElement("div");
+        panel.id = "cms-search-panel";
+
+        const input = document.createElement("input");
+        input.id = "cms-search-input";
+        input.type = "search";
+        input.placeholder = "Search website text...";
+        input.setAttribute(
+          "aria-label",
+          "Search website text"
+        );
+
+        const results = document.createElement("div");
+        results.id = "cms-search-results";
+
+        panel.appendChild(input);
+        panel.appendChild(results);
+
+        document.body.appendChild(panel);
+
+        searchInput = input;
+        resultsBox = results;
+
+        input.addEventListener("input", updateResults);
+      }
+
+      setInterval(setupSearch, 1000);
+
+      setupSearch();
+    })();
+  </script>
+
 </body>
 </html>
