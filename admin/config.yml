@@ -547,6 +547,10 @@ collections:
         name: text_124
         widget: string
         required: false
+      - label: text_125 — Hero opening words
+        name: text_125
+        widget: string
+        required: false
     - label: Other Website Images
       name: site_images
       widget: object
