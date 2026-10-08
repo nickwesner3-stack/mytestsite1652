@@ -1917,7 +1917,7 @@
 </div>
 </div>
 
-<form action="#" class="estimate-form reveal" id="estimate-form" method="POST" name="estimate-request">
+<form action="https://formspree.io/f/mwlvorlw" class="estimate-form reveal" id="estimate-form" method="POST" name="estimate-request">
 
 <p hidden="">
 <label><span data-cms-text="text_092">Don't fill this out:</span><input name="bot-field"/>
@@ -2484,7 +2484,7 @@
     Object.entries(d.site_images||{}).forEach(function(e){document.querySelectorAll('[data-cms-image="'+e[0]+'"]').forEach(function(n){if(e[1])n.src=e[1];});});
     Object.entries(d.site_placeholders||{}).forEach(function(e){document.querySelectorAll('[data-cms-placeholder="'+e[0]+'"]').forEach(function(n){n.placeholder=e[1]||'';});});
     var form=document.getElementById('estimate-form');if(!form)return;
-    var endpoint=(d.estimate_form_endpoint||'').trim();var status=document.getElementById('estimate-form-status');
+    var endpoint = document.getElementById('estimate-form').action; var status = document.getElementById('estimate-form-status');
     form.addEventListener('submit',function(event){
       event.preventDefault();
       if(!/^https:\/\//i.test(endpoint)){status.textContent='Online estimates are being configured. Please contact us by phone or email.';return;}
