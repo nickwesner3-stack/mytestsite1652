@@ -8,5 +8,89 @@
 </head>
 <body>
   <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.17.0-beta.0/dist/decap-cms.js"></script>
+<script>
+(function () {
+  const SEARCH_ID = "cms-text-search";
+  const STYLE_ID = "cms-text-search-style";
+
+  function setupSearch() {
+    const editor = document.querySelector(
+      '[class*="EditorControlPane"], [class*="EditorControl"]'
+    );
+
+    if (!editor) return;
+
+    if (document.getElementById(SEARCH_ID)) return;
+
+    const search = document.createElement("input");
+    search.id = SEARCH_ID;
+    search.type = "search";
+    search.placeholder = "Search website text...";
+    search.setAttribute("aria-label", "Search editable text");
+
+    search.style.cssText = `
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+    `;
+
+    const message = document.createElement("div");
+    message.id = "cms-search-message";
+    message.style.cssText =
+      "margin-bottom:12px;font-size:13px;color:#666;";
+
+    editor.prepend(message);
+    editor.prepend(search);
+
+    function filterFields() {
+      const query = search.value.trim().toLowerCase();
+
+      const fields = editor.querySelectorAll(
+        '[class*="ControlContainer"]'
+      );
+
+      let matches = 0;
+
+      fields.forEach(function (field) {
+        const label = field.querySelector("label");
+        const input = field.querySelector(
+          "input, textarea"
+        );
+
+        const text = (
+          (label ? label.textContent : "") +
+          " " +
+          (input ? input.value : "")
+        ).toLowerCase();
+
+        const visible = !query || text.includes(query);
+
+        field.style.display = visible ? "" : "none";
+
+        if (visible) matches++;
+      });
+
+      message.textContent = query
+        ? matches + " matching fields"
+        : "";
+    }
+
+    search.addEventListener("input", filterFields);
+  }
+
+  const observer = new MutationObserver(setupSearch);
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+
+  setupSearch();
+})();
+</script>
 </body>
 </html>
